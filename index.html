@@ -1,11 +1,529 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>浅草データワークス</title>
+  <meta charset="UTF-8" />
+  <title>牛田商事 | BIツール活用サポート（Power BI / Tableau / Power Query）</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="牛田商事は、Power BI・Tableau・Power Queryを中心に、現場で使えるデータ可視化・レポート作成をサポートします。" />
+  <style>
+    :root {
+      --primary: #1c3b70;
+      --primary-light: #f1f5fb;
+      --accent: #0078d4;
+      --text-main: #222;
+      --text-muted: #666;
+      --border-soft: #e2e8f0;
+      --bg: #ffffff;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Yu Gothic", "Meiryo", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* Layout */
+    .container {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border-soft);
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--primary);
+    }
+    .logo-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+    }
+    nav a {
+      color: var(--text-muted);
+    }
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--primary-light), #ffffff);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 32px;
+      padding: 48px 0 40px;
+      align-items: center;
+    }
+    .hero-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+    .hero-lead {
+      font-size: 16px;
+      color: var(--text-main);
+      margin-bottom: 16px;
+    }
+    .hero-note {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn-primary {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+    .btn-ghost {
+      padding: 9px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      background: rgba(255,255,255,0.8);
+      color: var(--text-main);
+      font-size: 13px;
+      cursor: pointer;
+    }
+    .hero-highlight-card {
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      background: #fff;
+      padding: 18px 16px;
+      box-shadow: 0 8px 18px rgba(15,23,42,0.04);
+      font-size: 13px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--primary-light);
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .hero-highlight-card ul {
+      list-style: none;
+      margin-top: 6px;
+    }
+    .hero-highlight-card li::before {
+      content: "・";
+      margin-right: 2px;
+    }
+
+    /* Sections */
+    section {
+      padding: 40px 0 32px;
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+    .section-lead {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    /* Services */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .card {
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      padding: 18px 16px;
+      background: #fff;
+      font-size: 13px;
+    }
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .card-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .card li::before {
+      content: "・";
+      margin-right: 2px;
+    }
+
+    /* Strengths */
+    .columns-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .pill {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    /* Flow */
+    .flow-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      font-size: 13px;
+    }
+    .flow-step {
+      border-radius: 12px;
+      border: 1px dashed var(--border-soft);
+      padding: 12px 10px;
+      background: #fff;
+    }
+    .flow-step-num {
+      font-size: 11px;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .flow-step-title {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    /* Profile & Contact */
+    .two-cols {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+    .profile-name {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .profile-role {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .contact-box {
+      border-radius: 14px;
+      border: 1px solid var(--border-soft);
+      padding: 18px 16px;
+      background: var(--primary-light);
+      font-size: 13px;
+    }
+    .contact-box strong {
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      padding: 18px 0 24px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Responsive */
+    @media (max-width: 840px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+      .cards,
+      .columns-3 {
+        grid-template-columns: 1fr;
+      }
+      .flow-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .two-cols {
+        grid-template-columns: 1fr;
+      }
+      nav { display: none; } /* モバイルはとりあえずナビ非表示（シンプルに） */
+      .hero-title {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .flow-list {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>浅草データワークス</h1>
-  <p>Cloudflare Pages による Web サイト公開テストページです。</p>
+  <!-- Header -->
+  <header>
+    <div class="container header-inner">
+      <div>
+        <div class="logo">牛田商事</div>
+        <div class="logo-sub">BIツール活用サポート – Power BI / Tableau / Power Query</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#services">サービス</a></li>
+          <li><a href="#strength">選ばれる理由</a></li>
+          <li><a href="#flow">ご依頼の流れ</a></li>
+          <li><a href="#profile">プロフィール</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <h1 class="hero-title">Power BI・Tableau・Power Queryの<br>「現場で使える」活用をお手伝いします。</h1>
+        <p class="hero-lead">
+          牛田商事は、ツールの操作だけでなく、<br>
+          「どのように設計すれば社内で回るか」を一緒に考えるパートナーです。
+        </p>
+        <p class="hero-note">
+          ・初めてBIツールを導入したい企業様<br>
+          ・担当者が一人で抱え込んでしまっているチーム<br>
+          ・Excelだと限界を感じている現場　など
+        </p>
+        <div class="hero-actions">
+          <a href="#contact"><button class="btn-primary">お問い合わせはこちら</button></a>
+          <a href="#services"><button class="btn-ghost">提供しているサポート内容を見る</button></a>
+        </div>
+      </div>
+      <div>
+        <div class="hero-highlight-card">
+          <div class="badge">サポート対象ツール</div>
+          <strong>Microsoft Power BI / Tableau / Power Query（Excel）</strong>
+          <ul>
+            <li>ダッシュボード・レポートの設計・改善</li>
+            <li>データ前処理（Power Query）の整理・自動化</li>
+            <li>担当者向けレクチャー／社内勉強会</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">サービス内容</h2>
+      <p class="section-lead">
+        「ツールを入れただけで終わらせない」ことを大切にしています。<br>
+        現場の業務フローを伺いながら、ムリのない形でBIツールを組み込みます。
+      </p>
+
+      <div class="cards">
+        <div class="card">
+          <div class="card-title">Power BI ダッシュボード作成支援</div>
+          <div class="card-sub">経営・営業・現場向けレポート</div>
+          <ul>
+            <li>要件ヒアリングと指標の整理</li>
+            <li>Power BI Desktopでのレポート設計</li>
+            <li>DAXによる計算列・メジャーの作成支援</li>
+            <li>運用しやすい更新フローの整理</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Tableau レポート設計サポート</div>
+          <div class="card-sub">既存レポートの改善・新規構築</div>
+          <ul>
+            <li>既存ダッシュボードの見直し・軽量化</li>
+            <li>見せ方（グラフ選定・レイアウト）のアドバイス</li>
+            <li>計算フィールドの整理・標準化</li>
+            <li>ユーザー権限や公開方法の相談</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-title">Power Query / Excel データ整形</div>
+          <div class="card-sub">集計前処理の自動化・属人化の解消</div>
+          <ul>
+            <li>毎月のコピペ作業をPower Queryに置き換え</li>
+            <li>複数ファイルの結合・成形ステップの整理</li>
+            <li>エラーになりやすい部分の洗い出し</li>
+            <li>担当者がメンテしやすい形にリファクタリング</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strength -->
+  <section id="strength">
+    <div class="container">
+      <h2 class="section-title">牛田商事のこだわり</h2>
+      <p class="section-lead">
+        「高度なデータ分析」よりも、「毎日ちゃんと使われるレポート」を重視しています。
+      </p>
+
+      <div class="columns-3">
+        <div>
+          <div class="pill">01 現場目線</div>
+          <p><strong>実務の流れから考える設計</strong><br>
+            データをどう集めて、誰が見て、どう判断するのか。  
+            業務フローを伺いながら、無理なく回る形を一緒に組み立てます。
+          </p>
+        </div>
+        <div>
+          <div class="pill">02 わかりやすい説明</div>
+          <p><strong>専門用語をできるだけ使わない</strong><br>
+            「なぜこう作るのか」「どこを触ればいいのか」を、  
+            図や画面キャプチャを使いながら丁寧にお伝えします。
+          </p>
+        </div>
+        <div>
+          <div class="pill">03 引き継ぎしやすい形</div>
+          <p><strong>属人化しないレポート作り</strong><br>
+            手順書・コメント・命名規則など、  
+            将来担当者が変わっても困らない形を意識して設計します。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flow -->
+  <section id="flow">
+    <div class="container">
+      <h2 class="section-title">ご依頼の流れ</h2>
+      <p class="section-lead">
+        小さなご相談からで構いません。まずは「何に困っているのか」をお聞かせください。
+      </p>
+
+      <div class="flow-list">
+        <div class="flow-step">
+          <div class="flow-step-num">STEP 1</div>
+          <div class="flow-step-title">お問い合わせ</div>
+          <p>お問い合わせフォームまたはメールにて、現状のお悩みやツール環境について簡単にお知らせください。</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">STEP 2</div>
+          <div class="flow-step-title">オンライン打ち合わせ</div>
+          <p>現状のレポートや画面を見ながら、課題感・ゴールイメージをすり合わせます。（30〜60分程度）</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">STEP 3</div>
+          <div class="flow-step-title">ご提案・お見積り</div>
+          <p>対応内容・期間・料金の目安をご提案します。スポット支援・月額サポートなど柔軟にご相談可能です。</p>
+        </div>
+        <div class="flow-step">
+          <div class="flow-step-num">STEP 4</div>
+          <div class="flow-step-title">ご支援開始</div>
+          <p>オンライン画面共有や資料共有を中心に、ツール操作と設計の両面で伴走いたします。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Profile & Contact -->
+  <section id="profile">
+    <div class="container two-cols">
+      <div>
+        <h2 class="section-title">プロフィール</h2>
+        <p class="section-lead">データ分析まわりの業務と、現場の「使い勝手」の橋渡し役を目指しています。</p>
+        <p class="profile-name">牛田商事　代表　牛田 さん（仮）</p>
+        <p class="profile-role">BIツール活用・業務改善サポート</p>
+        <p>
+          事業会社・IT企業でのデータ活用案件に従事。  
+          Power BI / Tableau / Excel（Power Query）を用いたレポート設計や、  
+          社内勉強会の企画・運営などを経験。
+        </p>
+        <p style="margin-top:8px;">
+          「データ分析」という言葉よりも、  
+          「毎日の会議でちゃんと使えるレポート」を一緒に作ることを大事にしています。
+        </p>
+      </div>
+
+      <div id="contact">
+        <h2 class="section-title">お問い合わせ</h2>
+        <p class="section-lead">以下のフォームからお気軽にご相談ください。内容を確認のうえ、折り返しご連絡いたします。</p>
+
+        <div class="contact-box">
+          <p><strong>▼ Googleフォームをここに埋め込み予定</strong></p>
+          <p style="margin-top:6px;">
+            後で Googleフォームを作成したら、<br>
+            フォームの「送信」→「&lt;/&gt;（埋め込み）」で取得した
+            <code>&lt;iframe&gt;</code> のコードを、下のコメント行と差し替えてください。
+          </p>
+          <pre style="white-space:pre-wrap; font-size:11px; margin-top:8px;">
+<!-- ここを Googleフォーム の iframe で置き換えてください
+&lt;iframe src="https://docs.google.com/forms/..." width="100%" height="600" frameborder="0"&gt;&lt;/iframe&gt;
+-->
+          </pre>
+          <p style="margin-top:8px;">
+            それまでは、以下のメールアドレス宛にお問い合わせください。<br>
+            【メール】example@ushida-corp.com
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      &copy; <span id="year"></span> 牛田商事 / Ushida Corp. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
