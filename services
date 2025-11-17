@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>サービス詳細 | 牛田商事 – BIツール活用サポート</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="牛田商事のサービス詳細（Power BI・Tableau・Power Query）についてのご案内。" />
+  <style>
+    /* index.html とほぼ同じスタイルにしておく */
+    :root {
+      --primary: #1c3b70;
+      --primary-light: #f1f5fb;
+      --accent: #0078d4;
+      --text-main: #222;
+      --text-muted: #666;
+      --border-soft: #e2e8f0;
+      --bg: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Yu Gothic", "Meiryo", sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container {
+      width: 100%;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    header {
+      border-bottom: 1px solid var(--border-soft);
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 0;
+      gap: 12px;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--primary);
+    }
+    .logo-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 16px;
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    nav a:hover {
+      color: var(--primary);
+    }
+    nav a.is-current {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    main {
+      padding: 32px 0 40px;
+    }
+    .page-title {
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .page-lead {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+    .section {
+      margin-bottom: 32px;
+      border-bottom: 1px solid var(--border-soft);
+      padding-bottom: 24px;
+    }
+    .section:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .section h2 {
+      font-size: 18px;
+      margin-bottom: 6px;
+      color: var(--primary);
+    }
+    .section small {
+      display: block;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .section p {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    .section ul {
+      margin-left: 1em;
+      font-size: 14px;
+    }
+    .section ul li {
+      margin-bottom: 4px;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border-soft);
+      color: var(--text-muted);
+      margin-right: 6px;
+      margin-bottom: 4px;
+    }
+
+    .back-link {
+      margin-top: 24px;
+      font-size: 13px;
+    }
+    .back-link a {
+      color: var(--accent);
+    }
+
+    footer {
+      padding: 18px 0 24px;
+      font-size: 11px;
+      color: var(--text-muted);
+      text-align: center;
+      border-top: 1px solid var(--border-soft);
+    }
+
+    @media (max-width: 840px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-inner">
+      <div>
+        <div class="logo">牛田商事</div>
+        <div class="logo-sub">BIツール活用サポート – Power BI / Tableau / Power Query</div>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="services.html" class="is-current">詳しいサービス</a></li>
+          <li><a href="index.html#flow">ご依頼の流れ</a></li>
+          <li><a href="index.html#profile">プロフィール</a></li>
+          <li><a href="index.html#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">サービス詳細</h1>
+    <p class="page-lead">
+      ここでは、牛田商事が提供している各サービスについて、もう少し具体的にご紹介します。<br>
+      「何をどこまでお願いできるのか？」の目安としてご覧ください。
+    </p>
+
+    <section class="section" id="powerbi">
+      <h2>Power BI ダッシュボード作成支援</h2>
+      <small>対象：経営企画・営業企画・現場リーダーの方向け</small>
+      <p>
+        Power BI を用いて、経営層や営業現場が「毎週の会議で使える」ダッシュボードを一緒に設計します。<br>
+        既存のExcelや基幹システムのデータをもとに、「どの指標を、どの粒度で、どう見せるか」を整理するところからご支援可能です。
+      </p>
+      <p><strong>ご支援のイメージ</strong></p>
+      <ul>
+        <li>現状レポート・会議資料のヒアリング</li>
+        <li>指標（KPI/KGI・先行指標など）の整理・言語化</li>
+        <li>Power BI Desktop でのモデル設計・画面レイアウト案の作成</li>
+        <li>DAXを使った計算列・メジャーの作成サポート</li>
+        <li>更新手順・運用フロー（誰がいつ何をするか）の整理</li>
+      </ul>
+      <p>
+        <span class="tag">スポット支援</span>
+        <span class="tag">オンライン中心</span>
+        <span class="tag">画面共有での伴走</span>
+      </p>
+    </section>
+
+    <section class="section" id="tableau">
+      <h2>Tableau レポート設計・改善サポート</h2>
+      <small>対象：既にTableauをお使いの企業様</small>
+      <p>
+        「ダッシュボードが重い」「どのシートがどこで使われているのか分からない」など、  
+        Tableauを使い続けるなかで出てくるお悩みに対して、設計面・運用面からアドバイスします。
+      </p>
+      <p><strong>ご支援のイメージ</strong></p>
+      <ul>
+        <li>既存ダッシュボードの棚卸し（どの画面が誰に使われているか）</li>
+        <li>計算フィールド・抽出の整理とパフォーマンスの改善ポイントの洗い出し</li>
+        <li>利用者が迷わないレイアウト・フィルタ設計のご提案</li>
+        <li>Tableau Server / Online への公開・権限まわりの相談</li>
+      </ul>
+      <p>
+        <span class="tag">既存環境の見直し</span>
+        <span class="tag">軽量化</span>
+        <span class="tag">レポート標準化</span>
+      </p>
+    </section>
+
+    <section class="section" id="powerquery">
+      <h2>Power Query / Excel 前処理の整理・自動化</h2>
+      <small>対象：毎月のレポート作成に時間がかかっているご担当者様</small>
+      <p>
+        「毎月、複数ファイルをコピー＆ペーストして集計している」といった作業を、  
+        Power Query によって自動化・半自動化するお手伝いをします。
+      </p>
+      <p><strong>ご支援のイメージ</strong></p>
+      <ul>
+        <li>現状のExcelファイル・手作業ステップの整理</li>
+        <li>Power Query による結合・整形フローの設計</li>
+        <li>エラーが出やすい箇所・例外対応のパターン整理</li>
+        <li>担当者が後から見ても分かりやすい命名・コメントの付与</li>
+      </ul>
+      <p>
+        <span class="tag">日次・月次レポート</span>
+        <span class="tag">Excel業務の効率化</span>
+        <span class="tag">属人化の解消</span>
+      </p>
+    </section>
+
+    <section class="section" id="training">
+      <h2>担当者向けレクチャー・社内勉強会</h2>
+      <small>対象：社内に「BIツールの相談役」を育てたい企業様</small>
+      <p>
+        Power BI・Tableau・Power Query の「基本操作」から、「社内レポートを作るうえで最低限おさえたいポイント」まで、  
+        実際の業務データを題材にしたレクチャー形式でお伝えします。
+      </p>
+      <p><strong>内容例</strong></p>
+      <ul>
+        <li>Power BI / Tableau の基本機能ハンズオン</li>
+        <li>自社データを使ったダッシュボード作成ワークショップ</li>
+        <li>「見やすいグラフ」の作り方・NG例共有</li>
+        <li>運用を意識したファイル構成や権限設計の考え方</li>
+      </ul>
+      <p>
+        <span class="tag">オンライン研修</span>
+        <span class="tag">少人数向け</span>
+        <span class="tag">実データを使った演習</span>
+      </p>
+    </section>
+
+    <div class="back-link">
+      ← <a href="index.html">トップページに戻る</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      &copy; <span id="year"></span> 牛田商事 / Ushida Corp. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
