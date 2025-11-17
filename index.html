@@ -20,19 +20,22 @@
       margin: 0;
       padding: 0;
     }
+    html, body {
+      height: 100%;
+    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Yu Gothic", "Meiryo", sans-serif;
       background: var(--bg);
       color: var(--text-main);
       line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
     }
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
 
-    /* Layout */
     .container {
       width: 100%;
-      max-width: 1080px;
+      max-width: 1040px;
       margin: 0 auto;
       padding: 0 16px;
     }
@@ -51,6 +54,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px 0;
+      gap: 12px;
     }
     .logo {
       font-weight: 700;
@@ -64,14 +68,19 @@
     nav ul {
       list-style: none;
       display: flex;
-      gap: 18px;
+      gap: 16px;
       font-size: 14px;
     }
     nav a {
       color: var(--text-muted);
+      white-space: nowrap;
     }
     nav a:hover {
       color: var(--primary);
+    }
+    nav a.is-current {
+      color: var(--primary);
+      font-weight: 600;
     }
 
     /* Hero */
@@ -126,10 +135,13 @@
       padding: 9px 16px;
       border-radius: 999px;
       border: 1px solid var(--border-soft);
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.9);
       color: var(--text-main);
       font-size: 13px;
       cursor: pointer;
+    }
+    .btn-ghost:hover {
+      background: #fff;
     }
     .hero-highlight-card {
       border-radius: 14px;
@@ -157,7 +169,6 @@
       margin-right: 2px;
     }
 
-    /* Sections */
     section {
       padding: 40px 0 32px;
       border-bottom: 1px solid var(--border-soft);
@@ -174,7 +185,6 @@
       margin-bottom: 24px;
     }
 
-    /* Services */
     .cards {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -205,7 +215,6 @@
       margin-right: 2px;
     }
 
-    /* Strengths */
     .columns-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -221,7 +230,6 @@
       margin-bottom: 6px;
     }
 
-    /* Flow */
     .flow-list {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -245,7 +253,6 @@
       margin-bottom: 4px;
     }
 
-    /* Profile & Contact */
     .two-cols {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
@@ -272,7 +279,6 @@
       color: var(--primary);
     }
 
-    /* Footer */
     footer {
       padding: 18px 0 24px;
       font-size: 11px;
@@ -281,9 +287,20 @@
     }
 
     /* Responsive */
-    @media (max-width: 840px) {
+    @media (max-width: 960px) {
       .hero-inner {
+        padding: 32px 0 28px;
         grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 840px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        row-gap: 6px;
       }
       .cards,
       .columns-3 {
@@ -295,21 +312,32 @@
       .two-cols {
         grid-template-columns: 1fr;
       }
-      nav { display: none; } /* モバイルはとりあえずナビ非表示（シンプルに） */
       .hero-title {
         font-size: 24px;
       }
+      .hero-lead {
+        font-size: 15px;
+      }
     }
-
     @media (max-width: 520px) {
+      .container {
+        padding: 0 14px;
+      }
+      .hero-inner {
+        padding-top: 28px;
+      }
       .flow-list {
         grid-template-columns: 1fr;
+      }
+      .card,
+      .hero-highlight-card,
+      .contact-box {
+        padding: 16px 14px;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="container header-inner">
       <div>
@@ -318,7 +346,8 @@
       </div>
       <nav>
         <ul>
-          <li><a href="#services">サービス</a></li>
+          <li><a href="#services">サービス概要</a></li>
+          <li><a href="services.html">詳しいサービス</a></li>
           <li><a href="#strength">選ばれる理由</a></li>
           <li><a href="#flow">ご依頼の流れ</a></li>
           <li><a href="#profile">プロフィール</a></li>
@@ -328,7 +357,6 @@
     </div>
   </header>
 
-  <!-- Hero -->
   <section class="hero">
     <div class="container hero-inner">
       <div>
@@ -344,7 +372,7 @@
         </p>
         <div class="hero-actions">
           <a href="#contact"><button class="btn-primary">お問い合わせはこちら</button></a>
-          <a href="#services"><button class="btn-ghost">提供しているサポート内容を見る</button></a>
+          <a href="services.html"><button class="btn-ghost">詳しいサービス内容を見る</button></a>
         </div>
       </div>
       <div>
@@ -361,10 +389,9 @@
     </div>
   </section>
 
-  <!-- Services -->
   <section id="services">
     <div class="container">
-      <h2 class="section-title">サービス内容</h2>
+      <h2 class="section-title">サービス概要</h2>
       <p class="section-lead">
         「ツールを入れただけで終わらせない」ことを大切にしています。<br>
         現場の業務フローを伺いながら、ムリのない形でBIツールを組み込みます。
@@ -405,7 +432,6 @@
     </div>
   </section>
 
-  <!-- Strength -->
   <section id="strength">
     <div class="container">
       <h2 class="section-title">牛田商事のこだわり</h2>
@@ -439,7 +465,6 @@
     </div>
   </section>
 
-  <!-- Flow -->
   <section id="flow">
     <div class="container">
       <h2 class="section-title">ご依頼の流れ</h2>
@@ -472,7 +497,6 @@
     </div>
   </section>
 
-  <!-- Profile & Contact -->
   <section id="profile">
     <div class="container two-cols">
       <div>
@@ -504,7 +528,7 @@
           </p>
           <pre style="white-space:pre-wrap; font-size:11px; margin-top:8px;">
 <!-- ここを Googleフォーム の iframe で置き換えてください
-&lt;iframe src="https://docs.google.com/forms/..." width="100%" height="600" frameborder="0"&gt;&lt;/iframe&gt;
+<iframe src="https://docs.google.com/forms/..." width="100%" height="600" frameborder="0"></iframe>
 -->
           </pre>
           <p style="margin-top:8px;">
