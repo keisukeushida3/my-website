@@ -78,10 +78,6 @@
     nav a:hover {
       color: var(--primary);
     }
-    nav a.is-current {
-      color: var(--primary);
-      font-weight: 600;
-    }
 
     /* Hero */
     .hero {
@@ -151,23 +147,6 @@
       box-shadow: 0 8px 18px rgba(15,23,42,0.04);
       font-size: 13px;
     }
-    .badge {
-      display: inline-block;
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: var(--primary-light);
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-    .hero-highlight-card ul {
-      list-style: none;
-      margin-top: 6px;
-    }
-    .hero-highlight-card li::before {
-      content: "・";
-      margin-right: 2px;
-    }
 
     section {
       padding: 40px 0 32px;
@@ -190,44 +169,11 @@
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
-    .card {
-      border-radius: 14px;
-      border: 1px solid var(--border-soft);
-      padding: 18px 16px;
-      background: #fff;
-      font-size: 13px;
-    }
-    .card-title {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .card-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-    .card ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .card li::before {
-      content: "・";
-      margin-right: 2px;
-    }
 
     .columns-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
-    }
-    .pill {
-      display: inline-block;
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      color: var(--text-muted);
-      margin-bottom: 6px;
     }
 
     .flow-list {
@@ -236,22 +182,6 @@
       gap: 14px;
       font-size: 13px;
     }
-    .flow-step {
-      border-radius: 12px;
-      border: 1px dashed var(--border-soft);
-      padding: 12px 10px;
-      background: #fff;
-    }
-    .flow-step-num {
-      font-size: 11px;
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .flow-step-title {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
 
     .two-cols {
       display: grid;
@@ -259,24 +189,13 @@
       gap: 24px;
       align-items: start;
     }
-    .profile-name {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .profile-role {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
+
     .contact-box {
       border-radius: 14px;
       border: 1px solid var(--border-soft);
       padding: 18px 16px;
       background: var(--primary-light);
       font-size: 13px;
-    }
-    .contact-box strong {
-      color: var(--primary);
     }
 
     footer {
@@ -294,45 +213,12 @@
       }
     }
     @media (max-width: 840px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      nav ul {
-        flex-wrap: wrap;
-        row-gap: 6px;
-      }
       .cards,
       .columns-3 {
         grid-template-columns: 1fr;
       }
-      .flow-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
       .two-cols {
         grid-template-columns: 1fr;
-      }
-      .hero-title {
-        font-size: 24px;
-      }
-      .hero-lead {
-        font-size: 15px;
-      }
-    }
-    @media (max-width: 520px) {
-      .container {
-        padding: 0 14px;
-      }
-      .hero-inner {
-        padding-top: 28px;
-      }
-      .flow-list {
-        grid-template-columns: 1fr;
-      }
-      .card,
-      .hero-highlight-card,
-      .contact-box {
-        padding: 16px 14px;
       }
     }
   </style>
@@ -375,6 +261,7 @@
           <a href="services.html"><button class="btn-ghost">詳しいサービス内容を見る</button></a>
         </div>
       </div>
+
       <div>
         <div class="hero-highlight-card">
           <div class="badge">サポート対象ツール</div>
@@ -400,32 +287,29 @@
       <div class="cards">
         <div class="card">
           <div class="card-title">Power BI ダッシュボード作成支援</div>
-          <div class="card-sub">経営・営業・現場向けレポート</div>
           <ul>
             <li>要件ヒアリングと指標の整理</li>
             <li>Power BI Desktopでのレポート設計</li>
-            <li>DAXによる計算列・メジャーの作成支援</li>
+            <li>DAXによる計算列・メジャー作成</li>
             <li>運用しやすい更新フローの整理</li>
           </ul>
         </div>
+
         <div class="card">
           <div class="card-title">Tableau レポート設計サポート</div>
-          <div class="card-sub">既存レポートの改善・新規構築</div>
           <ul>
             <li>既存ダッシュボードの見直し・軽量化</li>
-            <li>見せ方（グラフ選定・レイアウト）のアドバイス</li>
-            <li>計算フィールドの整理・標準化</li>
-            <li>ユーザー権限や公開方法の相談</li>
+            <li>見せ方（グラフ選定・レイアウト）の改善</li>
+            <li>計算フィールドの整理</li>
           </ul>
         </div>
+
         <div class="card">
           <div class="card-title">Power Query / Excel データ整形</div>
-          <div class="card-sub">集計前処理の自動化・属人化の解消</div>
           <ul>
-            <li>毎月のコピペ作業をPower Queryに置き換え</li>
-            <li>複数ファイルの結合・成形ステップの整理</li>
-            <li>エラーになりやすい部分の洗い出し</li>
-            <li>担当者がメンテしやすい形にリファクタリング</li>
+            <li>毎月の集計作業をPower Queryに置き換え</li>
+            <li>複数ファイルの結合・整形</li>
+            <li>エラーになりやすい箇所の洗い出し</li>
           </ul>
         </div>
       </div>
@@ -436,29 +320,28 @@
     <div class="container">
       <h2 class="section-title">牛田商事のこだわり</h2>
       <p class="section-lead">
-        「高度なデータ分析」よりも、「毎日ちゃんと使われるレポート」を重視しています。
+        「高度なデータ分析」よりも、「毎日ちゃんと使われるレポート」を重視。
       </p>
 
       <div class="columns-3">
         <div>
           <div class="pill">01 現場目線</div>
-          <p><strong>実務の流れから考える設計</strong><br>
-            データをどう集めて、誰が見て、どう判断するのか。  
-            業務フローを伺いながら、無理なく回る形を一緒に組み立てます。
+          <p>
+            実務フローから逆算し、無理なく回るレポート設計を行います。
           </p>
         </div>
+
         <div>
           <div class="pill">02 わかりやすい説明</div>
-          <p><strong>専門用語をできるだけ使わない</strong><br>
-            「なぜこう作るのか」「どこを触ればいいのか」を、  
-            図や画面キャプチャを使いながら丁寧にお伝えします。
+          <p>
+            専門用語をできるだけ使わず、図やキャプチャで丁寧に解説します。
           </p>
         </div>
+
         <div>
-          <div class="pill">03 引き継ぎしやすい形</div>
-          <p><strong>属人化しないレポート作り</strong><br>
-            手順書・コメント・命名規則など、  
-            将来担当者が変わっても困らない形を意識して設計します。
+          <div class="pill">03 引き継ぎしやすい設計</div>
+          <p>
+            担当者が変わっても困らないよう、命名・構造まで整えます。
           </p>
         </div>
       </div>
@@ -469,29 +352,25 @@
     <div class="container">
       <h2 class="section-title">ご依頼の流れ</h2>
       <p class="section-lead">
-        小さなご相談からで構いません。まずは「何に困っているのか」をお聞かせください。
+        小さなご相談からで構いません。まずはお気軽にお知らせください。
       </p>
 
       <div class="flow-list">
         <div class="flow-step">
-          <div class="flow-step-num">STEP 1</div>
-          <div class="flow-step-title">お問い合わせ</div>
-          <p>お問い合わせフォームまたはメールにて、現状のお悩みやツール環境について簡単にお知らせください。</p>
+          <div class="flow-step-title">STEP 1 お問い合わせ</div>
+          <p>簡単な現状共有のみで構いません。</p>
         </div>
         <div class="flow-step">
-          <div class="flow-step-num">STEP 2</div>
-          <div class="flow-step-title">オンライン打ち合わせ</div>
-          <p>現状のレポートや画面を見ながら、課題感・ゴールイメージをすり合わせます。（30〜60分程度）</p>
+          <div class="flow-step-title">STEP 2 オンライン打ち合わせ</div>
+          <p>現状のレポートを見ながら課題整理を行います。</p>
         </div>
         <div class="flow-step">
-          <div class="flow-step-num">STEP 3</div>
-          <div class="flow-step-title">ご提案・お見積り</div>
-          <p>対応内容・期間・料金の目安をご提案します。スポット支援・月額サポートなど柔軟にご相談可能です。</p>
+          <div class="flow-step-title">STEP 3 ご提案・お見積り</div>
+          <p>スポット支援・継続支援など柔軟に。</p>
         </div>
         <div class="flow-step">
-          <div class="flow-step-num">STEP 4</div>
-          <div class="flow-step-title">ご支援開始</div>
-          <p>オンライン画面共有や資料共有を中心に、ツール操作と設計の両面で伴走いたします。</p>
+          <div class="flow-step-title">STEP 4 ご支援開始</div>
+          <p>操作＋設計の両面から並走サポートします。</p>
         </div>
       </div>
     </div>
@@ -501,30 +380,33 @@
     <div class="container two-cols">
       <div>
         <h2 class="section-title">プロフィール</h2>
-        <p class="section-lead">データ分析まわりの業務と、現場の「使い勝手」の橋渡し役を目指しています。</p>
+        <p class="section-lead">現場の“使える”レポートづくりを重視しています。</p>
+
         <p class="profile-name">牛田商事　代表　牛田 さん（仮）</p>
         <p class="profile-role">BIツール活用・業務改善サポート</p>
+
         <p>
-          事業会社・IT企業でのデータ活用案件に従事。  
-          Power BI / Tableau / Excel（Power Query）を用いたレポート設計や、  
-          社内勉強会の企画・運営などを経験。
-        </p>
-        <p style="margin-top:8px;">
-          「データ分析」という言葉よりも、  
-          「毎日の会議でちゃんと使えるレポート」を一緒に作ることを大事にしています。
+          事業会社およびIT企業にて、Power BI / Tableau / Power Query を活用した
+          レポート設計・データ活用プロジェクトに従事。<br>
+          「毎日の会議でちゃんと使える仕組みづくり」を大切にしています。
         </p>
       </div>
 
+      <!-- ✨ ここから問い合わせフォーム（別タブで開く） -->
       <div id="contact">
         <h2 class="section-title">お問い合わせ</h2>
         <p class="section-lead">
-          以下のフォームからお気軽にご相談ください。内容を確認のうえ、折り返しご連絡いたします。
+          BIツール活用についてお気軽にご相談ください。
         </p>
 
-          <!-- 外部フォームリンク（別タブで開く） -->
+        <div class="contact-box">
+          <p><strong>お問い合わせフォーム</strong></p>
+          <p style="margin-top:6px;">
+            Power BI・Tableau・Power Query に関するご相談を受け付けています。<br>
+            現状のお困りごとを、分かる範囲でご記入ください。
+          </p>
+
           <div style="margin-top:12px;">
-            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSc-zWNKAqa0DqnMjRWVdQivJBVxWRObs9ZKeXotUdYJitCnIA/viewform?embedded=true"
-              width="100%" height="2446" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSc-zWNKAqa0DqnMjRWVdQivJBVxWRObs9ZKeXotUdYJitCnIA/viewform?embedded=true"
                target="_blank"
                style="
@@ -534,18 +416,18 @@
                  color:#fff;
                  border-radius:6px;
                  font-size:14px;
-                 text-decoration:none;
                ">
               ▶ お問い合わせフォームを開く
             </a>
           </div>
+
           <p style="margin-top:12px; font-size:12px; color:#555;">
-            フォームが表示されない場合や、メールでのご相談をご希望の場合は<br>
-            下記アドレス宛にもお問い合わせいただけます。<br>
-            【メール】keisukeushida3@gmail.com
+            フォームが開けない場合はメールでも受け付けています。<br>
+            【メール】example@ushida-corp.com
           </p>
         </div>
       </div>
+      <!-- ✨ 問い合わせフォームここまで -->
     </div>
   </section>
 
