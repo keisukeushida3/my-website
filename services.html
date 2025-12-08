@@ -2,9 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
-  <title>サービス詳細 | 牛田商事 – BIツール活用サポート</title>
+  <title>SaaS導入・DX意思決定代理 | ベンダー中立のFit&GAP・PoC支援</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="牛田商事のサービス詳細（Power BI・Tableau・Power Query）についてのご案内。" />
+  <meta name="description" content="SaaS導入・DX支援の意思決定を経営者の代理人として代行。比較・PoC・Fit&GAP分析をベンダー中立で行い、手戻りゼロの導入を実現します。" />
   <style>
     /* index.html とほぼ同じスタイルにしておく */
     :root {
@@ -78,13 +78,13 @@
       padding: 32px 0 40px;
     }
     .page-title {
-      font-size: 22px;
-      font-weight: 600;
+      font-size: 24px;
+      font-weight: 700;
       color: var(--primary);
-      margin-bottom: 4px;
+      margin-bottom: 10px;
     }
     .page-lead {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--text-muted);
       margin-bottom: 24px;
     }
@@ -102,6 +102,11 @@
       margin-bottom: 6px;
       color: var(--primary);
     }
+    .section h3 {
+      font-size: 16px;
+      margin: 12px 0 6px;
+      color: var(--text-main);
+    }
     .section small {
       display: block;
       font-size: 12px;
@@ -117,49 +122,46 @@
       font-size: 14px;
     }
     .section ul li {
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
-    .tag {
-      display: inline-block;
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 999px;
+    .hero {
+      background: var(--primary-light);
+      padding: 20px;
       border: 1px solid var(--border-soft);
-      color: var(--text-muted);
+      border-radius: 8px;
+      margin-bottom: 24px;
+    }
+    .hero strong { color: var(--primary); }
+    .label {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
       margin-right: 6px;
-      margin-bottom: 4px;
+      margin-bottom: 6px;
     }
-
-    .back-link {
-      margin-top: 24px;
-      font-size: 13px;
+    .cta-box {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 8px;
     }
-    .back-link a {
-      color: var(--accent);
-    }
-
-    footer {
-      padding: 18px 0 24px;
-      font-size: 11px;
-      color: var(--text-muted);
-      text-align: center;
-      border-top: 1px solid var(--border-soft);
-    }
-
-    @media (max-width: 840px) {
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    .cta-box a {
+      color: #c7d2fe;
+      font-weight: 600;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
   <header>
     <div class="container header-inner">
-      <a href="index.html">
-        <div class="logo">牛田商事</div>
-        <div class="logo-sub">BIツール活用サポート – Power BI / Tableau / Power Query</div>
+      <a href="index.html" class="logo-area">
+        <div class="logo">Ushida DX Agency</div>
+        <div class="logo-sub">SaaS導入・DX意思決定を経営者の代理で支援</div>
       </a>
       <nav>
         <ul>
@@ -175,95 +177,86 @@
   </header>
 
   <main class="container">
-    <h1 class="page-title">サービス詳細</h1>
-    <p class="page-lead">
-      ここでは、牛田商事が提供している各サービスについて、もう少し具体的にご紹介します。<br>
-      「何をどこまでお願いできるのか？」の目安としてご覧ください。
-    </p>
+    <h1 class="page-title">SaaS導入・DX意思決定の代理支援</h1>
+    <p class="page-lead">経営者の代理人として、ベンダー中立で「比較・PoC・Fit&GAP分析・意思決定支援」を一括提供。受発注・在庫・経理・勤怠などの業務SaaS導入を、手戻りゼロで着地させます。</p>
 
-    <section class="section" id="powerbi">
-      <h2>Power BI ダッシュボード作成支援</h2>
-      <small>対象：経営企画・営業企画・現場リーダーの方向け</small>
-      <p>
-        Power BI を用いて、経営層や営業現場が「毎週の会議で使える」ダッシュボードを一緒に設計します。<br>
-        既存のExcelや基幹システムのデータをもとに、「どの指標を、どの粒度で、どう見せるか」を整理するところからご支援可能です。
-      </p>
-      <p><strong>ご支援のイメージ</strong></p>
+    <div class="hero">
+      <p><strong>ヒーローコピー：</strong><br>「SaaS導入の意思決定を、経営者の立場で代理します。<br>PoC・比較・Fit&GAP分析を一括支援。導入の手戻りをゼロに。」</p>
+    </div>
+
+    <section class="section">
+      <h2>① 導入失敗の課題訴求</h2>
+      <p>紙・Excel中心の属人運用から抜け出すためにSaaS導入を決めても、次のような理由で失敗しがちです。</p>
       <ul>
-        <li>現状レポート・会議資料のヒアリング</li>
-        <li>指標（KPI/KGI・先行指標など）の整理・言語化</li>
-        <li>Power BI Desktop でのモデル設計・画面レイアウト案の作成</li>
-        <li>DAXを使った計算列・メジャーの作成サポート</li>
-        <li>更新手順・運用フロー（誰がいつ何をするか）の整理</li>
+        <li>営業トークで比較判断が歪み、ベンダー主導で決まってしまう</li>
+        <li>実機PoCなしで選定し、現場で動かない</li>
+        <li>Fit&GAP分析が浅く、要件外が後から噴出する</li>
+        <li>定着プランがないため、利用率が上がらない</li>
+        <li>属人運用のままロールアウトして崩壊する</li>
       </ul>
-      <p>
-        <span class="tag">スポット支援</span>
-        <span class="tag">オンライン中心</span>
-        <span class="tag">画面共有での伴走</span>
-      </p>
+      <p>結果として「導入したのに使われない」「再選定の手戻りが発生する」など、コストと時間を失うケースが後を絶ちません。</p>
     </section>
 
-    <section class="section" id="tableau">
-      <h2>Tableau レポート設計・改善サポート</h2>
-      <small>対象：既にTableauをお使いの企業様</small>
-      <p>
-        「ダッシュボードが重い」「どのシートがどこで使われているのか分からない」など、  
-        Tableauを使い続けるなかで出てくるお悩みに対して、設計面・運用面からアドバイスします。
-      </p>
-      <p><strong>ご支援のイメージ</strong></p>
+    <section class="section">
+      <h2>② 提供する価値</h2>
+      <p>私たちは経営者・DX担当の代理人として、ベンダー中立で意思決定を支援します。</p>
       <ul>
-        <li>既存ダッシュボードの棚卸し（どの画面が誰に使われているか）</li>
-        <li>計算フィールド・抽出の整理とパフォーマンスの改善ポイントの洗い出し</li>
-        <li>利用者が迷わないレイアウト・フィルタ設計のご提案</li>
-        <li>Tableau Server / Online への公開・権限まわりの相談</li>
+        <li>経営者代理で導入判断を代行し、判断基準を経営視点で統一</li>
+        <li>現場ヒアリングからFit&GAPまで中立評価し、要件漏れを防止</li>
+        <li>実機PoCで運用テストを行い、意思決定の精度を高める</li>
       </ul>
-      <p>
-        <span class="tag">既存環境の見直し</span>
-        <span class="tag">軽量化</span>
-        <span class="tag">レポート標準化</span>
-      </p>
     </section>
 
-    <section class="section" id="powerquery">
-      <h2>Power Query / Excel 前処理の整理・自動化</h2>
-      <small>対象：毎月のレポート作成に時間がかかっているご担当者様</small>
-      <p>
-        「毎月、複数ファイルをコピー＆ペーストして集計している」といった作業を、  
-        Power Query によって自動化・半自動化するお手伝いをします。
-      </p>
-      <p><strong>ご支援のイメージ</strong></p>
-      <ul>
-        <li>現状のExcelファイル・手作業ステップの整理</li>
-        <li>Power Query による結合・整形フローの設計</li>
-        <li>エラーが出やすい箇所・例外対応のパターン整理</li>
-        <li>担当者が後から見ても分かりやすい命名・コメントの付与</li>
-      </ul>
-      <p>
-        <span class="tag">日次・月次レポート</span>
-        <span class="tag">Excel業務の効率化</span>
-        <span class="tag">属人化の解消</span>
-      </p>
+    <section class="section">
+      <h2>③ サービス内容（6ステップ）</h2>
+      <ol>
+        <li><strong>現状ヒアリング：</strong>紙・Excel・メールで分断された業務を棚卸しし、優先度とROI仮説を整理。</li>
+        <li><strong>SaaS比較（3〜6社）：</strong>受発注・在庫・経理・勤怠などの領域で、機能/費用/運用負荷を同一基準で比較。</li>
+        <li><strong>実機PoC：</strong>小さくスコープを区切り、実データで操作検証。現場メンバーも同席し、運用リスクを洗い出し。</li>
+        <li><strong>Fit&GAP分析：</strong>要件のマッピングとカスタマイズ要否を明文化。補完策や業務変更案も提示。</li>
+        <li><strong>意思決定資料：</strong>ROI試算、リスク一覧、導入ロードマップをまとめ、社内決裁を通しやすくします。</li>
+        <li><strong>定着支援：</strong>権限管理の設計、トレーニング、運用レビューを行い、SaaSの利用率を継続的にモニタリング。</li>
+      </ol>
     </section>
 
-    <section class="section" id="training">
-      <h2>担当者向けレクチャー・社内勉強会</h2>
-      <small>対象：社内に「BIツールの相談役」を育てたい企業様</small>
-      <p>
-        Power BI・Tableau・Power Query の「基本操作」から、「社内レポートを作るうえで最低限おさえたいポイント」まで、  
-        実際の業務データを題材にしたレクチャー形式でお伝えします。
-      </p>
-      <p><strong>内容例</strong></p>
+    <section class="section">
+      <h2>④ 成果・メリット</h2>
       <ul>
-        <li>Power BI / Tableau の基本機能ハンズオン</li>
-        <li>自社データを使ったダッシュボード作成ワークショップ</li>
-        <li>「見やすいグラフ」の作り方・NG例共有</li>
-        <li>運用を意識したファイル構成や権限設計の考え方</li>
+        <li>導入判断の精度向上：ベンダー中立のPoC・Fit&GAPで意思決定を定量化</li>
+        <li>手戻り削減：要件漏れと現場不一致を事前に解消</li>
+        <li>定着率向上：権限設計とオンボーディングで運用崩壊を防止</li>
+        <li>現場の合意形成：ユーザー部門と経営の目線をそろえた資料づくり</li>
+        <li>導入スピードUP：決裁に必要な情報を一括整理し、実行フェーズへ即移行</li>
       </ul>
-      <p>
-        <span class="tag">オンライン研修</span>
-        <span class="tag">少人数向け</span>
-        <span class="tag">実データを使った演習</span>
-      </p>
+    </section>
+
+    <section class="section">
+      <h2>⑤ 対象企業</h2>
+      <p>次のような中小〜中堅企業（30〜300名）に最適です。</p>
+      <ul>
+        <li>IT担当が不在または兼務で、SaaS導入の比較・PoCが進まない</li>
+        <li>受発注・在庫・経理・勤怠などの主要業務が紙・Excel中心で属人化している</li>
+        <li>ベンダー中立でFit&GAPとROI評価をしたいが、社内にノウハウがない</li>
+        <li>複数拠点・多店舗で運用標準化が必要だが、要件整理に時間が取れない</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>⑥ 料金モデル</h2>
+      <p>案件規模とPoC範囲に応じて柔軟に設計します。</p>
+      <ul>
+        <li>Fit&GAP・比較・PoC支援：30〜150万円（期間とスコープにより変動）</li>
+        <li>継続伴走・定着支援：10〜25万円 / 月（運用レビュー・トレーニング込み）</li>
+      </ul>
+      <p>まずは課題とPoC範囲を確認したうえで、初回の概算をお出しします。</p>
+    </section>
+
+    <section class="section">
+      <h2>⑦ まずは無料相談（CTA）</h2>
+      <div class="cta-box">
+        <p>現状の業務課題とPoCで確認したい範囲だけ共有いただければ、最適なSaaS導入ステップと費用の目安をお伝えします。<br>ベンダー中立の立場で、意思決定の不安を解消します。</p>
+        <p><a href="index.html#contact">無料相談はこちら</a></p>
+      </div>
     </section>
 
     <div class="back-link">
@@ -273,7 +266,7 @@
 
   <footer>
     <div class="container">
-      &copy; <span id="year"></span> 牛田商事 / Ushida Corp. All rights reserved.
+      &copy; <span id="year"></span> Ushida DX Agency. All rights reserved.
     </div>
   </footer>
 
