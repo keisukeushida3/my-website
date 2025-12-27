@@ -1,562 +1,565 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <link rel="icon" href="favicon.png" type="image/png">
   <meta charset="UTF-8" />
-  <title>Ushida DX Agency | SaaS導入・DX意思決定代理支援</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="SaaS導入・DX支援の意思決定を経営者の代理人として代行。受発注・在庫・経理・勤怠などのSaaSを、比較・PoC・Fit&GAP分析で手戻りなく定着させるサービスです。" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>牛田商事 | 経営者のためのIT投資・SaaS導入支援パートナー</title>
+  <meta name="description" content="経営判断に直結するIT投資・SaaS選定を支援。巷に溢れるツールから貴社に最適な解を選び抜き、業務プロセス改善からデータ分析まで、経営者の代理人として伴走します。" />
+  <link rel="icon" href="favicon.png" type="image/png">
+  
+  <!-- Google Fonts: 信頼感のある「Noto Sans JP」と英字用「Montserrat」を採用 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
   <style>
+    /* --- Base Variables --- */
     :root {
-      --primary: #1c3b70;
-      --primary-light: #f1f5fb;
-      --accent: #0078d4;
-      --text-main: #222;
-      --text-muted: #666;
-      --border-soft: #e2e8f0;
-      --bg: #ffffff;
+      /* Colors */
+      --color-primary: #1c3b70;       /* 信頼のネイビー */
+      --color-primary-dark: #0f254a;
+      --color-accent: #0078d4;        /* 行動を促すブルー */
+      --color-text-body: #334155;     /* 読みやすいダークグレー */
+      --color-text-muted: #64748b;
+      --color-bg-light: #f8fafc;
+      --color-bg-white: #ffffff;
+      --color-border: #e2e8f0;
+
+      /* Spacing */
+      --spacing-xs: 8px;
+      --spacing-sm: 16px;
+      --spacing-md: 32px;
+      --spacing-lg: 64px;
+      --spacing-xl: 96px;
+
+      /* Container */
+      --container-width: 1100px;
     }
+
+    /* --- Reset & Global Styles --- */
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
-    html, body {
-      height: 100%;
-    }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Yu Gothic", "Meiryo", sans-serif;
-      background: var(--bg);
-      color: var(--text-main);
-      line-height: 1.7;
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--color-text-body);
+      background-color: var(--color-bg-white);
+      line-height: 1.8;
       -webkit-font-smoothing: antialiased;
     }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
 
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* --- Components --- */
     .container {
       width: 100%;
-      max-width: 1040px;
+      max-width: var(--container-width);
       margin: 0 auto;
-      padding: 0 16px;
+      padding: 0 var(--spacing-sm);
     }
 
-    /* Header */
-    header {
-      border-bottom: 1px solid var(--border-soft);
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 0;
-      gap: 12px;
-    }
-    .logo {
-      font-weight: 700;
-      font-size: 18px;
-      color: var(--primary);
-    }
-    .logo-sub {
-      font-size: 11px;
-      color: var(--text-muted);
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 16px;
-      font-size: 14px;
-    }
-    nav a {
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-    nav a:hover {
-      color: var(--primary);
-    }
-    nav a.is-current {
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    /* Hero */
-    .hero {
-      background: linear-gradient(135deg, var(--primary-light), #ffffff);
-      border-bottom: 1px solid var(--border-soft);
-    }
-    .hero-inner {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 32px;
-      padding: 48px 0 40px;
-      align-items: center;
-    }
-    .hero-title {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      color: var(--primary);
-    }
-    .hero-lead {
-      font-size: 16px;
-      color: var(--text-main);
-      margin-bottom: 16px;
-    }
-    .hero-note {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .btn-primary {
-      padding: 10px 18px;
-      border-radius: 999px;
-      border: none;
-      background: var(--accent);
-      color: #fff;
-      font-size: 14px;
-      cursor: pointer;
+    .btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-    }
-    .btn-primary:hover {
-      opacity: 0.9;
-    }
-    .btn-ghost {
-      padding: 9px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      background: rgba(255,255,255,0.9);
-      color: var(--text-main);
-      font-size: 13px;
+      justify-content: center;
+      padding: 14px 32px;
+      border-radius: 4px; /* 知的な印象のため、丸すぎない角丸 */
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.05em;
+      transition: all 0.3s ease;
       cursor: pointer;
     }
-    .btn-ghost:hover {
-      background: #fff;
+
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(28, 59, 112, 0.25);
     }
-    .hero-highlight-card {
-      border-radius: 14px;
-      border: 1px solid var(--border-soft);
-      background: #fff;
-      padding: 18px 16px;
-      box-shadow: 0 8px 18px rgba(15,23,42,0.04);
-      font-size: 13px;
-    }
-    .badge {
-      display: inline-block;
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      background: var(--primary-light);
-      color: var(--primary);
-      margin-bottom: 8px;
-    }
-    .hero-highlight-card ul {
-      list-style: none;
-      margin-top: 6px;
-    }
-    .hero-highlight-card li::before {
-      content: "・";
-      margin-right: 2px;
+    .btn-primary:hover {
+      background-color: var(--color-primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(28, 59, 112, 0.3);
     }
 
-    section {
-      padding: 40px 0 32px;
-      border-bottom: 1px solid var(--border-soft);
+    .btn-outline {
+      border: 1px solid var(--color-primary);
+      color: var(--color-primary);
+      background: transparent;
     }
+    .btn-outline:hover {
+      background-color: var(--color-bg-light);
+    }
+
     .section-title {
-      font-size: 20px;
-      font-weight: 600;
-      margin-bottom: 6px;
-      color: var(--primary);
+      font-size: 32px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: var(--spacing-sm);
+      color: var(--color-primary);
+      font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
     }
-    .section-lead {
+    
+    .section-subtitle {
+      text-align: center;
+      color: var(--color-text-muted);
+      margin-bottom: var(--spacing-lg);
+      font-size: 16px;
+    }
+
+    /* --- Header --- */
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--color-border);
+      z-index: 1000;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--color-primary);
+      letter-spacing: -0.02em;
+    }
+    .logo span {
+      font-weight: 400;
       font-size: 14px;
-      color: var(--text-muted);
+      color: var(--color-text-muted);
+      margin-left: 10px;
+    }
+
+    .nav-list {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-text-body);
+    }
+    .nav-link:hover {
+      color: var(--color-accent);
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      padding: 160px 0 100px;
+      background: linear-gradient(135deg, var(--color-bg-light) 0%, #ffffff 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background-color: #e0f2fe;
+      color: var(--color-accent);
+      padding: 6px 12px;
+      border-radius: 99px;
+      font-size: 13px;
+      font-weight: 600;
       margin-bottom: 24px;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
+    .hero-title {
+      font-size: 42px;
+      line-height: 1.4;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 24px;
     }
-    .card {
-      border-radius: 14px;
-      border: 1px solid var(--border-soft);
-      padding: 18px 16px;
+
+    .hero-desc {
+      font-size: 18px;
+      color: var(--color-text-muted);
+      margin-bottom: 40px;
+      max-width: 640px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+    }
+
+    /* --- Features / Concept --- */
+    .features {
+      padding: var(--spacing-xl) 0;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .feature-card {
+      padding: 32px;
       background: #fff;
-      font-size: 13px;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      transition: box-shadow 0.3s ease;
     }
-    .card-title {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .card-sub {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-    .card ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .card li::before {
-      content: "・";
-      margin-right: 2px;
+    .feature-card:hover {
+      box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+      border-color: var(--color-accent);
     }
 
-    .columns-3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-    .pill {
-      display: inline-block;
-      font-size: 11px;
-      padding: 2px 8px;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      color: var(--text-muted);
-      margin-bottom: 6px;
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: var(--color-accent);
     }
 
-    .flow-list {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      font-size: 13px;
+    .feature-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: var(--color-primary);
     }
-    .flow-step {
+
+    .feature-text {
+      font-size: 15px;
+      color: var(--color-text-muted);
+    }
+
+    /* --- Services Teaser --- */
+    .services-teaser {
+      background-color: var(--color-bg-light);
+      padding: var(--spacing-xl) 0;
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      margin-bottom: 80px;
+    }
+    .service-row:last-child {
+      margin-bottom: 0;
+    }
+    .service-row.reverse {
+      direction: rtl; /* 簡易的な逆配置 */
+    }
+    .service-row.reverse > * {
+      direction: ltr;
+    }
+
+    .service-content h3 {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--color-primary);
+    }
+
+    .service-content p {
+      margin-bottom: 24px;
+      color: var(--color-text-muted);
+    }
+
+    .service-visual {
+      background: #fff;
+      height: 300px;
       border-radius: 12px;
-      border: 1px dashed var(--border-soft);
-      padding: 12px 10px;
-      background: #fff;
-    }
-    .flow-step-num {
-      font-size: 11px;
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .flow-step-title {
-      font-weight: 600;
-      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--color-border);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.03);
+      color: #cbd5e1;
+      font-weight: 700;
     }
 
-    .two-cols {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-      gap: 24px;
-      align-items: start;
-    }
-    .profile-name {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .profile-role {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
-    }
-    .contact-box {
-      border-radius: 14px;
-      border: 1px solid var(--border-soft);
-      padding: 18px 16px;
-      background: var(--primary-light);
-      font-size: 13px;
-    }
-    .contact-box strong {
-      color: var(--primary);
-    }
-
-    footer {
-      padding: 18px 0 24px;
-      font-size: 11px;
-      color: var(--text-muted);
+    /* --- CTA Section --- */
+    .cta {
+      padding: 80px 0;
+      background-color: var(--color-primary);
+      color: #fff;
       text-align: center;
     }
-
-    /* Responsive */
-    @media (max-width: 960px) {
-      .hero-inner {
-        padding: 32px 0 28px;
-        grid-template-columns: 1fr;
-      }
+    .cta h2 {
+      font-size: 32px;
+      margin-bottom: 16px;
     }
-    @media (max-width: 840px) {
+    .cta p {
+      margin-bottom: 32px;
+      opacity: 0.9;
+    }
+    .cta .btn {
+      background: #fff;
+      color: var(--color-primary);
+    }
+    .cta .btn:hover {
+      background: #f1f5f9;
+    }
+
+    /* --- Footer --- */
+    .footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+      padding: 64px 0 24px;
+      font-size: 14px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+    .footer-logo {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .footer-links ul {
+      list-style: none;
+    }
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+    .footer-links a:hover {
+      color: #fff;
+    }
+    .copyright {
+      text-align: center;
+      border-top: 1px solid #1e293b;
+      padding-top: 24px;
+    }
+
+    /* --- Mobile --- */
+    @media (max-width: 768px) {
       .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
+        padding: 0 16px;
       }
-      nav ul {
-        flex-wrap: wrap;
-        row-gap: 6px;
+      .logo span {
+        display: none;
       }
-      .cards,
-      .columns-3 {
-        grid-template-columns: 1fr;
-      }
-      .flow-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-      .two-cols {
-        grid-template-columns: 1fr;
+      .nav-list {
+        display: none; /* 簡易的に非表示（ハンバーガーメニューはJS必要になるため今回は省略） */
       }
       .hero-title {
-        font-size: 24px;
+        font-size: 32px;
       }
-      .hero-lead {
-        font-size: 15px;
+      .features-grid, .service-row {
+        grid-template-columns: 1fr;
+        gap: 32px;
       }
-    }
-    @media (max-width: 520px) {
-      .container {
-        padding: 0 14px;
+      .service-row.reverse {
+        direction: ltr;
       }
-      .hero-inner {
-        padding-top: 28px;
-      }
-      .flow-list {
+      .footer-grid {
         grid-template-columns: 1fr;
       }
-      .card,
-      .hero-highlight-card,
-      .contact-box {
-        padding: 16px 14px;
+      .btn {
+        width: 100%;
       }
     }
   </style>
 </head>
 <body>
-  <header>
+
+  <!-- Header -->
+  <header class="header">
     <div class="container header-inner">
-      <a href="index.html">
-        <div class="logo">Ushida DX Agency</div>
-        <div class="logo-sub">SaaS導入・DX意思決定を経営者の代理で支援</div>
+      <a href="index.html" class="logo">
+        牛田商事
+        <span>SaaS導入・IT投資意思決定支援</span>
       </a>
       <nav>
-        <ul>
-          <li><a href="#services">サービス概要</a></li>
-          <li><a href="services.html">詳しいサービス</a></li>
-          <li><a href="#strength">価値提供</a></li>
-          <li><a href="#flow">ご依頼の流れ</a></li>
-          <li><a href="#profile">プロフィール</a></li>
-          <li><a href="#contact">お問い合わせ</a></li>
+        <ul class="nav-list">
+          <li><a href="services/index.html" class="nav-link">サービス</a></li>
+          <li><a href="company/index.html" class="nav-link">私たちについて</a></li>
+          <!-- 将来的な拡張例: <li><a href="/products/" class="nav-link">取扱製品</a></li> -->
+          <li><a href="#contact" class="btn btn-primary" style="padding: 8px 20px; font-size: 14px;">お問い合わせ</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
+  <!-- Hero -->
   <section class="hero">
-    <div class="container hero-inner">
-      <div>
-        <h1 class="hero-title">SaaS導入の意思決定を、<br>経営者の立場で代理します。</h1>
-        <p class="hero-lead">
-          受発注・在庫・経理・勤怠などの業務SaaSを、
-          ベンダー中立で「比較・PoC・Fit&GAP分析」を実施。<br>
-          手戻りゼロで定着させるDX伴走支援です。
-        </p>
-        <p class="hero-note">
-          ・中小〜中堅企業（30〜300名）の経営者・DX担当の代理人として意思決定を支援<br>
-          ・紙・Excel中心で属人運用が多い企業、IT担当が不足している企業に最適
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-tag">経営者・IT推進者のためのパートナー</span>
+        <h1 class="hero-title">
+          最適なIT投資判断を、<br>
+          経営者の代理人として実現する。
+        </h1>
+        <p class="hero-desc">
+          溢れるSaaS製品・ツールの中から、貴社の業務とフェーズに最適な解を選定。
+          導入支援から業務プロセス改善、データ分析まで、
+          「なんとなくのIT化」を「利益を生むIT投資」へ変えるお手伝いをします。
         </p>
         <div class="hero-actions">
-          <a href="#contact"><button class="btn-primary">無料相談はこちら</button></a>
-          <a href="services.html"><button class="btn-ghost">詳しいサービス内容を見る</button></a>
-        </div>
-      </div>
-      <div>
-        <div class="hero-highlight-card">
-          <div class="badge">支援の特徴</div>
-          <strong>ベンダー中立 × 経営者代理人</strong>
-          <ul>
-            <li>SaaS比較（3〜6社）を同一基準で評価</li>
-            <li>実機PoCで運用負荷とリスクを洗い出し</li>
-            <li>Fit&GAPとROI試算で意思決定を見える化</li>
-          </ul>
+          <a href="#contact" class="btn btn-primary">無料相談を申し込む</a>
+          <a href="services/index.html" class="btn btn-outline">サービス詳細を見る</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="services">
+  <!-- Concept / Features -->
+  <section class="features">
     <div class="container">
-      <h2 class="section-title">サービス概要</h2>
-      <p class="section-lead">
-        SaaS導入・DX支援に必要な「比較・PoC・Fit&GAP・定着」を一括提供。経営者の代理人として意思決定の質とスピードを高めます。
+      <h2 class="section-title">牛田商事の特徴</h2>
+      <p class="section-subtitle">ベンダーに依存しない、中立的かつ経営視点のサポート</p>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚖️</div>
+          <h3 class="feature-title">中立的な選定・判断</h3>
+          <p class="feature-text">
+            特定のSaaSベンダーの代理店ではありません。
+            「貴社にとって何がベストか」という一点においてのみ比較・検証し、
+            公平な目でFit&GAP分析を行います。
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3 class="feature-title">経営視点のROI試算</h3>
+          <p class="feature-text">
+            単なる機能比較表ではなく、「投資対効果（ROI）」や
+            「将来的なリスク」まで含めた意思決定資料を作成。
+            経営判断のスピードと質を高めます。
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h3 class="feature-title">定着までの伴走</h3>
+          <p class="feature-text">
+            ツールを入れて終わりではありません。
+            現場への定着、業務プロセスの見直し、
+            さらにその後のデータ活用まで一気通貫で支援します。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Teaser -->
+  <section class="services-teaser">
+    <div class="container">
+      <h2 class="section-title">Services</h2>
+      <p class="section-subtitle">IT投資の各フェーズに合わせたご支援</p>
+
+      <div class="service-row">
+        <div class="service-content">
+          <h3>SaaS選定・導入支援</h3>
+          <p>
+            「どのツールが良いかわからない」「比較検討する時間がない」という課題に対し、要件定義から比較、PoC（実機検証）までを代行。手戻りのない導入を実現します。
+          </p>
+          <ul style="list-style: none; margin-bottom: 24px; color: var(--color-text-muted); font-size: 14px;">
+            <li>✅ 主要業務（受発注・在庫・経理など）のSaaS比較</li>
+            <li>✅ 実機を用いたPoC・運用テスト</li>
+            <li>✅ 意思決定のための決裁資料作成</li>
+          </ul>
+          <a href="services/index.html" class="btn btn-outline" style="padding: 10px 24px; font-size: 14px;">詳しく見る</a>
+        </div>
+        <div class="service-visual">
+          [Image: 複数のSaaSロゴや比較表をイメージした図]
+        </div>
+      </div>
+
+      <div class="service-row reverse">
+        <div class="service-content">
+          <h3>業務プロセス改善・データ分析</h3>
+          <p>
+            SaaS導入は手段に過ぎません。導入後のデータ活用や、BIツールを用いた可視化、業務フローの再設計を行い、組織の生産性を最大化します。
+          </p>
+          <ul style="list-style: none; margin-bottom: 24px; color: var(--color-text-muted); font-size: 14px;">
+            <li>✅ 業務フローの棚卸しと再設計</li>
+            <li>✅ データ分析基盤の構築支援</li>
+            <li>✅ BIツールによる経営ダッシュボード作成</li>
+          </ul>
+          <a href="services/index.html" class="btn btn-outline" style="padding: 10px 24px; font-size: 14px;">詳しく見る</a>
+        </div>
+        <div class="service-visual">
+          [Image: データ分析グラフやダッシュボードのイメージ図]
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="container">
+      <h2>まずは現状の課題をお聞かせください</h2>
+      <p>
+        SaaS導入の悩み、業務改善の課題など、<br>
+        まだ具体的でなくても構いません。初回相談は無料です。
       </p>
-
-      <div class="cards">
-        <div class="card">
-          <div class="card-title">SaaS比較と短期PoC</div>
-          <div class="card-sub">受発注・在庫・経理・勤怠など</div>
-          <ul>
-            <li>3〜6社を同一基準で比較・ショートリスト化</li>
-            <li>実機PoCで運用負荷・UI/UX・権限を検証</li>
-            <li>紙・Excel運用のボトルネックを洗い出し</li>
-            <li>ベンダー中立で議事メモとリスク一覧を作成</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-title">Fit&GAPと意思決定資料</div>
-          <div class="card-sub">ROI・リスク・導入ロードマップ</div>
-          <ul>
-            <li>業務要件をマッピングし、GAPと代替策を整理</li>
-            <li>ROI試算とリスク評価で決裁資料を作成</li>
-            <li>導入スケジュールと体制案を明文化</li>
-            <li>経営会議で説明しやすい形で提供</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div class="card-title">定着支援・運用レビュー</div>
-          <div class="card-sub">権限管理・教育・運用定着</div>
-          <ul>
-            <li>権限設計と運用フローの整備</li>
-            <li>現場トレーニングとQ&A、手順書整備</li>
-            <li>利用率モニタリングと改善サイクル</li>
-            <li>属人化しない運用モデルを設計</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="strength">
-    <div class="container">
-      <h2 class="section-title">価値提供</h2>
-      <p class="section-lead">
-        経営者と現場の目線をそろえ、ベンダー中立で意思決定を支援します。
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc-zWNKAqa0DqnMjRWVdQivJBVxWRObs9ZKeXotUdYJitCnIA/viewform" target="_blank" class="btn">
+        お問い合わせフォームを開く
+      </a>
+      <p style="margin-top: 24px; font-size: 14px; opacity: 0.8;">
+        Email:k.ushida@ushida-corp.com
       </p>
-
-      <div class="columns-3">
-        <div>
-          <div class="pill">01 中立の比較</div>
-          <p><strong>営業トークに左右されない判断</strong><br>
-            要件・費用・運用負荷を統一指標で比較し、意思決定を透明化します。
-          </p>
-        </div>
-        <div>
-          <div class="pill">02 PoCで検証</div>
-          <p><strong>机上ではなく実機で確認</strong><br>
-            小スコープで実データ検証し、Fit&GAPとリスクを具体化します。
-          </p>
-        </div>
-        <div>
-          <div class="pill">03 定着まで伴走</div>
-          <p><strong>権限・教育・運用をセットで支援</strong><br>
-            ローンチ後の利用率モニタリングと改善レビューで、属人化を防ぎます。
-          </p>
-        </div>
-      </div>
     </div>
   </section>
 
-  <section id="flow">
+  <!-- Footer -->
+  <footer class="footer">
     <div class="container">
-      <h2 class="section-title">ご依頼の流れ</h2>
-      <p class="section-lead">
-        小さなPoCや比較相談からで構いません。まずは現状の課題と、どこまでをPoCで確認したいかをお聞かせください。
-      </p>
-
-      <div class="flow-list">
-        <div class="flow-step">
-          <div class="flow-step-num">STEP 1</div>
-          <div class="flow-step-title">お問い合わせ</div>
-          <p>フォームまたはメールで、業務領域（受発注・在庫・経理など）と現状課題をお知らせください。</p>
-        </div>
-        <div class="flow-step">
-          <div class="flow-step-num">STEP 2</div>
-          <div class="flow-step-title">現状ヒアリング</div>
-          <p>現行フローや紙・Excel運用を確認し、PoCの範囲と優先度を決めます。（30〜60分程度）</p>
-        </div>
-        <div class="flow-step">
-          <div class="flow-step-num">STEP 3</div>
-          <div class="flow-step-title">ご提案・お見積り</div>
-          <p>SaaS比較の進め方、PoCシナリオ、Fit&GAPとROI試算の方法を提示し、期間と費用の目安をお伝えします。</p>
-        </div>
-        <div class="flow-step">
-          <div class="flow-step-num">STEP 4</div>
-          <div class="flow-step-title">ご支援開始</div>
-          <p>実機PoC、Fit&GAP、意思決定資料作成、定着支援までワンストップで伴走します。</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="profile">
-    <div class="container two-cols">
-      <div>
-        <h2 class="section-title">プロフィール</h2>
-        <p class="section-lead">SaaS導入・DX案件で、経営層と現場をつなぐ「代理人」として伴走します。</p>
-        <p class="profile-name">Ushida DX Agency　代表　牛田 圭亮</p>
-        <p class="profile-role">SaaS導入・DX意思決定支援</p>
-        <p>
-          事業会社・IT企業で受発注・在庫・経理・勤怠などの業務SaaS導入を経験。複数拠点・多店舗の標準化や、PoCとFit&GAPを踏まえた意思決定資料の作成を担当。
-        </p>
-        <p style="margin-top:8px;">
-          営業トークに依存せず、中立の立場で比較・PoC・定着まで支援することで、導入の手戻りをゼロにすることを目指しています。
-        </p>
-      </div>
-
-      <div id="contact">
-        <h2 class="section-title">お問い合わせ</h2>
-        <p class="section-lead">
-          以下のフォームからお気軽にご相談ください。内容を確認のうえ、折り返しご連絡いたします。
-        </p>
-
-        <div class="contact-box">
-          <p><strong>お問い合わせフォーム</strong></p>
-          <p style="margin-top:6px;">
-            SaaS導入・DX支援（比較・PoC・Fit&GAP・定着）に関するご相談を受け付けています。<br>
-            現状の業務課題やPoCで確認したいポイントを、分かる範囲でご入力ください。
+      <div class="footer-grid">
+        <div>
+          <span class="footer-logo">牛田商事</span>
+          <p>
+            経営者・IT推進者のための<br>
+            SaaS導入・意思決定支援パートナー
           </p>
-
-        <!-- 外部フォームリンク（別タブで開く） -->
-        <div style="margin-top:12px;">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSc-zWNKAqa0DqnMjRWVdQivJBVxWRObs9ZKeXotUdYJitCnIA/viewform?embedded=true"
-           target="_blank"
-           style="
-             display:inline-block;
-             padding:10px 20px;
-             background:#0078d4;
-             color:#fff;
-             border-radius:6px;
-             font-size:14px;
-             text-decoration:none;
-         ">
-      ▶ お問い合わせフォームを開く
-          </a>
         </div>
-
-        <p style="margin-top:12px; font-size:12px; color:#555;">
-          フォームが表示されない場合や、メールでのご相談をご希望の場合は<br>
-          下記アドレス宛にもお問い合わせいただけます。<br>
-          【メール】keisukeushida3@gmail.com
-        </p>
+        <div class="footer-links">
+          <h4>Menu</h4>
+          <ul>
+            <li><a href="index.html">トップページ</a></li>
+            <li><a href="services/index.html">サービス一覧</a></li>
+            <li><a href="company/index.html">会社概要</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#contact">お問い合わせ</a></li>
+            <li><a href="#">プライバシーポリシー</a></li>
+          </ul>
         </div>
       </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="container">
-      &copy; <span id="year"></span> Ushida DX Agency / Ushida Corp. All rights reserved.
+      <div class="copyright">
+        &copy; <script>document.write(new Date().getFullYear())</script> 牛田商事. All rights reserved.
+      </div>
     </div>
   </footer>
-
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
