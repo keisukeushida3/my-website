@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>サービス内容 | 牛田商事</title>
+  <meta name="description" content="SaaS導入・DX支援のサービス詳細。経営者の代理人として、ベンダー中立の立場から「比較・PoC・Fit&GAP分析・定着」を一気通貫で支援します。" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* 【共通設定】
+      company/index.html と共通の変数を定義しています。
+      将来的に style.css に移行推奨。
+    */
+    :root {
+      --color-primary: #1c3b70;
+      --color-primary-dark: #0f254a;
+      --color-accent: #0078d4;
+      --color-text-body: #334155;
+      --color-text-muted: #64748b;
+      --color-bg-light: #f8fafc;
+      --color-bg-white: #ffffff;
+      --color-border: #e2e8f0;
+      
+      --container-width: 1000px;
+      --spacing-sm: 16px;
+      --spacing-md: 32px;
+      --spacing-lg: 64px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--color-text-body);
+      background-color: var(--color-bg-white);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { text-decoration: none; color: inherit; transition: color 0.2s; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 var(--spacing-sm);
+    }
+
+    /* --- Header --- */
+    .header {
+      background: #fff;
+      border-bottom: 1px solid var(--color-border);
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-weight: 700;
+      color: var(--color-primary);
+      font-family: 'Montserrat', sans-serif;
+    }
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 14px;
+    }
+    .nav-links a:hover { color: var(--color-accent); }
+
+    /* --- Page Header --- */
+    .page-header {
+      background: var(--color-bg-light);
+      padding: 80px 0 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .page-title {
+      font-size: 32px;
+      color: var(--color-primary);
+      font-weight: 700;
+      margin-bottom: 16px;
+      font-family: 'Montserrat', sans-serif;
+    }
+    .page-desc {
+      color: var(--color-text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* --- Sections --- */
+    .section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+    .section:last-child { border-bottom: none; }
+    
+    .section-title {
+      font-size: 24px;
+      color: var(--color-primary);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      font-weight: 700;
+    }
+    .section-title::before {
+      content: "";
+      display: block;
+      width: 6px;
+      height: 24px;
+      background: var(--color-accent);
+      margin-right: 12px;
+      border-radius: 2px;
+    }
+
+    /* --- Content Blocks --- */
+    .content-block {
+      margin-bottom: 48px;
+    }
+    .content-block:last-child { margin-bottom: 0; }
+
+    .block-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-text-body);
+      margin-bottom: 16px;
+    }
+    .block-text {
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+    .list-check {
+      list-style: none;
+      margin-top: 16px;
+      background: var(--color-bg-light);
+      padding: 24px;
+      border-radius: 8px;
+    }
+    .list-check li {
+      margin-bottom: 12px;
+      position: relative;
+      padding-left: 24px;
+      font-weight: 500;
+    }
+    .list-check li:last-child { margin-bottom: 0; }
+    .list-check li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+
+    /* --- Flow (Step) --- */
+    .flow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .flow-item {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .flow-num {
+      color: var(--color-accent);
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .flow-heading {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .flow-desc {
+      font-size: 14px;
+      color: var(--color-text-muted);
+    }
+
+    /* --- Pricing --- */
+    .price-box {
+      background: var(--color-primary);
+      color: #fff;
+      border-radius: 8px;
+      padding: 40px;
+      text-align: center;
+    }
+    .price-title {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      display: inline-block;
+      padding-bottom: 8px;
+    }
+    .price-list {
+      list-style: none;
+      text-align: left;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .price-list li {
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px dashed rgba(255,255,255,0.3);
+      padding-bottom: 8px;
+    }
+    .price-label { font-weight: 700; }
+    .price-value { font-family: 'Montserrat', sans-serif; }
+
+    /* --- CTA --- */
+    .cta-section {
+      background: var(--color-bg-light);
+      text-align: center;
+      padding: 80px 0;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--color-accent);
+      color: #fff;
+      padding: 16px 48px;
+      border-radius: 50px;
+      font-weight: 700;
+      margin-top: 24px;
+      transition: opacity 0.2s;
+      box-shadow: 0 4px 12px rgba(0, 120, 212, 0.3);
+    }
+    .cta-btn:hover { opacity: 0.9; }
+
+    /* --- Footer --- */
+    .footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+      padding: 40px 0;
+      text-align: center;
+      font-size: 12px;
+    }
+
+    @media (max-width: 768px) {
+      .header-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .nav-links { flex-wrap: wrap; gap: 16px; }
+      .page-title { font-size: 24px; }
+      .price-list li { flex-direction: column; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">牛田商事</a>
+      <nav class="nav-links">
+        <a href="../company/index.html">私たちについて</a>
+        <a href="../calculator.html">資金計画</a>
+        <a href="../index.html#contact">お問い合わせ</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <h1 class="page-title">Service</h1>
+      <p class="page-desc">
+        SaaS導入・DX意思決定の「代理人」として。<br>
+        ベンダー中立の立場で、貴社の利益を最大化する選択を支援します。
+      </p>
+    </div>
+  </div>
+
+  <main class="container">
+    
+    <!-- 課題提起 -->
+    <section class="section">
+      <h2 class="section-title">Why Us?</h2>
+      <div class="content-block">
+        <h3 class="block-title">SaaS導入、こんな失敗をしていませんか？</h3>
+        <p class="block-text">
+          紙・Excel中心の属人運用から脱却するためにSaaS導入を決めても、
+          多くの企業が「導入したのに使われない」「現場の業務実態に合わない」という壁に直面します。
+        </p>
+        <ul class="list-check">
+          <li>営業トークに押され、機能過多で高額なツールを契約してしまった</li>
+          <li>実機でのテスト（PoC）をせずに導入し、現場が混乱している</li>
+          <li>導入後の定着プランがなく、結局Excel管理に戻ってしまった</li>
+          <li>ベンダー側の視点しか入っておらず、自社の業務フローと乖離がある</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- サービス内容 -->
+    <section class="section">
+      <h2 class="section-title">Our Service</h2>
+      <div class="content-block">
+        <h3 class="block-title">経営者の代理人として「意思決定」を支援</h3>
+        <p class="block-text">
+          私たちはベンダーではありません。特定のツールを売るノルマもありません。
+          あくまで貴社の「代理人」として、フラットな視点で最適なツールを選定し、
+          泥臭い現場の調整までを引き受けます。
+        </p>
+      </div>
+
+      <div class="flow-grid">
+        <div class="flow-item">
+          <div class="flow-num">STEP 01</div>
+          <h3 class="flow-heading">現状ヒアリング・棚卸し</h3>
+          <p class="flow-desc">
+            紙・Excel・メールで分断された業務フローを可視化。
+            どこがボトルネックなのか、システム化でROIが出るのかを整理します。
+          </p>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">STEP 02</div>
+          <h3 class="flow-heading">SaaS選定・比較</h3>
+          <p class="flow-desc">
+            受発注・在庫・経理・勤怠など、対象領域のツールを3〜6社ピックアップ。
+            機能・費用・使いやすさを同一基準で比較表にまとめます。
+          </p>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">STEP 03</div>
+          <h3 class="flow-heading">実機PoC・Fit&GAP</h3>
+          <p class="flow-desc">
+            候補ツールを実際に触り、現場業務が回るかを検証（PoC）。
+            機能の不足部分（GAP）を洗い出し、運用でのカバー策を提示します。
+          </p>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">STEP 04</div>
+          <h3 class="flow-heading">意思決定・契約支援</h3>
+          <p class="flow-desc">
+            ROI試算やリスク評価を含めた決裁資料を作成。
+            経営判断に必要な材料を全て揃え、契約交渉もサポートします。
+          </p>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">STEP 05</div>
+          <h3 class="flow-heading">導入・定着支援</h3>
+          <p class="flow-desc">
+            初期設定代行だけでなく、現場向けのマニュアル作成や説明会を実施。
+            「使える」状態になるまで伴走します。
+          </p>
+        </div>
+        <div class="flow-item">
+          <div class="flow-num">STEP 06</div>
+          <h3 class="flow-heading">運用モニタリング</h3>
+          <p class="flow-desc">
+            導入後の利用率を監視。
+            形骸化していないか定期的にチェックし、改善サイクルを回します。
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 対象企業 -->
+    <section class="section">
+      <h2 class="section-title">Target</h2>
+      <div class="content-block">
+        <h3 class="block-title">このような企業様に最適です</h3>
+        <p class="block-text">
+          従業員数 30〜300名規模の中小・中堅企業様を中心に支援しています。
+        </p>
+        <ul class="list-check">
+          <li>専任のIT担当がおらず、総務や経理が兼務している</li>
+          <li>主要業務（受発注・在庫管理など）がベテラン社員の頭の中にしかない</li>
+          <li>複数拠点・多店舗展開しており、業務標準化が急務である</li>
+          <li>過去にシステム導入で失敗した経験があり、慎重に進めたい</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 料金 -->
+    <section class="section">
+      <h2 class="section-title">Price</h2>
+      <div class="price-box">
+        <div class="price-title">参考価格</div>
+        <ul class="price-list">
+          <li>
+            <span class="price-label">スポット支援（比較・PoC）</span>
+            <span class="price-value">30万円 〜 150万円</span>
+          </li>
+          <li>
+            <span class="price-label">定着支援・CIO代行（月額）</span>
+            <span class="price-value"50万円 〜 200万円 / 月</span>
+          </li>
+        </ul>
+        <p style="margin-top:24px; font-size:14px; opacity:0.9;">
+          ※ 課題の深さや範囲によって変動します。<br>
+          まずは無料相談にて現状をお聞かせください。
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="cta-section">
+    <div class="container">
+      <h2 style="font-size:24px; color:var(--color-primary); margin-bottom:16px; font-weight:700;">
+        まずは無料相談から
+      </h2>
+      <p style="color:var(--color-text-muted);">
+        「何から手をつければいいか分からない」という段階でも構いません。<br>
+        現状の課題感や、確認したいポイントを整理するお手伝いをします。
+      </p>
+      <a href="../index.html#contact" class="cta-btn">お問い合わせはこちら</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      &copy; <script>document.write(new Date().getFullYear())</script> 牛田商事.
+    </div>
+  </footer>
+
+</body>
+</html>
