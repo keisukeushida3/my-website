@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>サービス内容 | 牛田商事</title>
-  <meta name="description" content="SaaS導入・DX支援のサービス詳細。経営者の代理人として、ベンダー中立の立場から「比較・PoC・Fit&GAP分析・定着」を一気通貫で支援します。" />
+  <title>Service | 牛田 DX Agency</title>
+  <meta name="description" content="牛田 DX Agencyのサービス詳細。SaaS選定・導入支援、現場への定着化、データ分析基盤の構築まで、一気通貫で支援します。" />
+  <!-- トップページと同じ階層にfaviconがあると仮定して ../ で指定 -->
+  <link rel="icon" href="../favicon.png" type="image/png">
   
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 
+  <!-- Icons (Lucide) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
   <style>
-    /* 【共通設定】
-      company/index.html と共通の変数を定義しています。
-      将来的に style.css に移行推奨。
-    */
+    /* --- Base Variables (トップページと共通) --- */
     :root {
       --color-primary: #1c3b70;
       --color-primary-dark: #0f254a;
@@ -24,402 +27,311 @@
       --color-bg-light: #f8fafc;
       --color-bg-white: #ffffff;
       --color-border: #e2e8f0;
-      
-      --container-width: 1000px;
-      --spacing-sm: 16px;
-      --spacing-md: 32px;
-      --spacing-lg: 64px;
+      --container-width: 1100px;
+      --header-height: 70px;
     }
 
+    /* --- Global Styles --- */
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: var(--header-height); }
     body {
       font-family: 'Noto Sans JP', sans-serif;
       color: var(--color-text-body);
       background-color: var(--color-bg-white);
       line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
+      padding-top: var(--header-height);
     }
-    a { text-decoration: none; color: inherit; transition: color 0.2s; }
-    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+    img { max-width: 100%; height: auto; display: block; }
+    ul { list-style: none; }
 
+    /* --- Components --- */
     .container {
       width: 100%;
       max-width: var(--container-width);
       margin: 0 auto;
-      padding: 0 var(--spacing-sm);
+      padding: 0 20px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 32px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(28, 59, 112, 0.2);
+    }
+    .btn-primary:hover {
+      background-color: var(--color-primary-dark);
+      transform: translateY(-2px);
     }
 
-    /* --- Header --- */
+    /* --- Header (トップページと共通) --- */
     .header {
-      background: #fff;
-      border-bottom: 1px solid var(--color-border);
-      padding: 16px 0;
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 100;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--color-border);
+      z-index: 1000;
     }
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .header-inner { display: flex; justify-content: space-between; align-items: center; height: 100%; }
     .logo {
-      font-weight: 700;
-      color: var(--color-primary);
       font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 20px;
+      color: var(--color-primary);
+      display: flex; flex-direction: column; line-height: 1.1;
     }
-    .nav-links {
-      display: flex;
-      gap: 24px;
-      font-size: 14px;
+    .logo span { font-size: 10px; font-weight: 500; color: var(--color-text-muted); margin-top: 2px; }
+    
+    .nav-list { display: flex; gap: 32px; align-items: center; }
+    .nav-link { font-size: 14px; font-weight: 600; color: var(--color-text-body); }
+    .nav-link:hover { color: var(--color-accent); }
+
+    .menu-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--color-primary); width: 40px; height: 40px; }
+    .mobile-nav {
+      position: fixed; top: var(--header-height); left: 0; width: 100%; height: calc(100vh - var(--header-height));
+      background: #fff; transform: translateX(100%); transition: transform 0.3s ease; z-index: 999;
+      padding: 40px 20px; display: flex; flex-direction: column; gap: 24px; border-top: 1px solid var(--color-border);
     }
-    .nav-links a:hover { color: var(--color-accent); }
+    .mobile-nav.is-open { transform: translateX(0); }
+    .mobile-nav a { font-size: 18px; font-weight: 700; color: var(--color-primary); padding: 10px 0; border-bottom: 1px solid var(--color-bg-light); }
 
     /* --- Page Header --- */
     .page-header {
-      background: var(--color-bg-light);
+      background: linear-gradient(135deg, var(--color-bg-light) 0%, #ffffff 100%);
       padding: 80px 0 60px;
       text-align: center;
-      border-bottom: 1px solid var(--color-border);
     }
     .page-title {
-      font-size: 32px;
-      color: var(--color-primary);
-      font-weight: 700;
-      margin-bottom: 16px;
-      font-family: 'Montserrat', sans-serif;
+      font-size: 32px; font-weight: 700; color: var(--color-primary); margin-bottom: 16px; font-family: 'Montserrat', sans-serif;
     }
-    .page-desc {
-      color: var(--color-text-muted);
-      max-width: 700px;
-      margin: 0 auto;
-    }
+    .page-desc { color: var(--color-text-muted); max-width: 700px; margin: 0 auto; }
 
-    /* --- Sections --- */
-    .section {
-      padding: 80px 0;
-      border-bottom: 1px solid var(--color-border);
-    }
+    /* --- Service Details --- */
+    .section { padding: 80px 0; border-bottom: 1px solid var(--color-border); }
     .section:last-child { border-bottom: none; }
     
-    .section-title {
-      font-size: 24px;
-      color: var(--color-primary);
-      margin-bottom: 40px;
-      display: flex;
-      align-items: center;
-      font-weight: 700;
+    .service-detail-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; margin-bottom: 64px;
     }
-    .section-title::before {
-      content: "";
-      display: block;
-      width: 6px;
-      height: 24px;
-      background: var(--color-accent);
-      margin-right: 12px;
-      border-radius: 2px;
+    .service-detail-content h3 {
+      font-size: 24px; font-weight: 700; color: var(--color-primary); margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
+    }
+    .service-detail-content p { margin-bottom: 24px; text-align: justify; }
+    
+    .check-list { background: var(--color-bg-light); padding: 24px; border-radius: 8px; }
+    .check-list li { margin-bottom: 12px; padding-left: 24px; position: relative; font-weight: 500; font-size: 14px; }
+    .check-list li::before { content: "✔"; position: absolute; left: 0; color: var(--color-accent); font-weight: 700; }
+
+    .service-visual {
+      background: #fff; border: 1px solid var(--color-border); border-radius: 12px; height: 300px;
+      display: flex; align-items: center; justify-content: center; color: #cbd5e1; font-weight: 700;
     }
 
-    /* --- Content Blocks --- */
-    .content-block {
-      margin-bottom: 48px;
+    /* --- Gym Section (Special) --- */
+    .gym-section { background-color: var(--color-bg-light); }
+    .gym-card {
+      background: #fff; border-radius: 12px; padding: 40px; border: 1px solid var(--color-border);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
     }
-    .content-block:last-child { margin-bottom: 0; }
-
-    .block-title {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--color-text-body);
-      margin-bottom: 16px;
+    .gym-badge {
+      display: inline-block; background: var(--color-primary); color: #fff; padding: 4px 12px; border-radius: 99px; font-size: 12px; font-weight: 700; margin-bottom: 16px;
     }
-    .block-text {
-      margin-bottom: 16px;
-      text-align: justify;
-    }
-    .list-check {
-      list-style: none;
-      margin-top: 16px;
-      background: var(--color-bg-light);
-      padding: 24px;
-      border-radius: 8px;
-    }
-    .list-check li {
-      margin-bottom: 12px;
-      position: relative;
-      padding-left: 24px;
-      font-weight: 500;
-    }
-    .list-check li:last-child { margin-bottom: 0; }
-    .list-check li::before {
-      content: "✔";
-      position: absolute;
-      left: 0;
-      color: var(--color-accent);
-      font-weight: 700;
-    }
-
-    /* --- Flow (Step) --- */
-    .flow-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-    .flow-item {
-      background: #fff;
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      padding: 24px;
-    }
-    .flow-num {
-      color: var(--color-accent);
-      font-weight: 700;
-      font-family: 'Montserrat', sans-serif;
-      margin-bottom: 8px;
-      font-size: 14px;
-    }
-    .flow-heading {
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    .flow-desc {
-      font-size: 14px;
-      color: var(--color-text-muted);
-    }
-
-    /* --- Pricing --- */
-    .price-box {
-      background: var(--color-primary);
-      color: #fff;
-      border-radius: 8px;
-      padding: 40px;
-      text-align: center;
-    }
-    .price-title {
-      font-size: 20px;
-      font-weight: 700;
-      margin-bottom: 24px;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      display: inline-block;
-      padding-bottom: 8px;
-    }
-    .price-list {
-      list-style: none;
-      text-align: left;
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    .price-list li {
-      margin-bottom: 16px;
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px dashed rgba(255,255,255,0.3);
-      padding-bottom: 8px;
-    }
-    .price-label { font-weight: 700; }
-    .price-value { font-family: 'Montserrat', sans-serif; }
-
-    /* --- CTA --- */
-    .cta-section {
-      background: var(--color-bg-light);
-      text-align: center;
-      padding: 80px 0;
-    }
-    .cta-btn {
-      display: inline-block;
-      background: var(--color-accent);
-      color: #fff;
-      padding: 16px 48px;
-      border-radius: 50px;
-      font-weight: 700;
-      margin-top: 24px;
-      transition: opacity 0.2s;
-      box-shadow: 0 4px 12px rgba(0, 120, 212, 0.3);
-    }
-    .cta-btn:hover { opacity: 0.9; }
 
     /* --- Footer --- */
-    .footer {
-      background-color: #0f172a;
-      color: #94a3b8;
-      padding: 40px 0;
-      text-align: center;
-      font-size: 12px;
-    }
+    .footer { background-color: #0f172a; color: #94a3b8; padding: 60px 0 24px; font-size: 14px; }
+    .copyright { text-align: center; border-top: 1px solid #1e293b; padding-top: 24px; margin-top: 40px; }
 
-    @media (max-width: 768px) {
-      .header-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .nav-links { flex-wrap: wrap; gap: 16px; }
-      .page-title { font-size: 24px; }
-      .price-list li { flex-direction: column; gap: 4px; }
+    /* Responsive */
+    @media (max-width: 860px) {
+      .service-detail-row, .gym-card { grid-template-columns: 1fr; gap: 32px; }
+      .nav-list { display: none; }
+      .menu-toggle { display: block; }
+      .header-inner { padding: 0 16px; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Header -->
   <header class="header">
     <div class="container header-inner">
-      <a href="../index.html" class="logo">牛田商事</a>
-      <nav class="nav-links">
-        <a href="../company/index.html">私たちについて</a>
-        <a href="../index.html#contact">お問い合わせ</a>
+      <a href="../index.html" class="logo">
+        牛田 DX Agency
+        <span>SaaS導入・DX意思決定支援</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-list">
+          <li><a href="../index.html" class="nav-link">トップ</a></li>
+          <li><a href="index.html" class="nav-link" style="color:var(--color-primary);">サービス</a></li>
+          <li><a href="../company/index.html" class="nav-link">私たちについて</a></li>
+          <li><a href="../index.html#contact" class="btn btn-primary" style="padding: 8px 20px; font-size: 14px;">お問い合わせ</a></li>
+        </ul>
       </nav>
+
+      <button class="menu-toggle" id="menuToggle"><i data-lucide="menu"></i></button>
     </div>
   </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="../index.html" class="mobile-link">トップ</a>
+    <a href="index.html" class="mobile-link">サービス</a>
+    <a href="../company/index.html" class="mobile-link">私たちについて</a>
+    <a href="../index.html#contact" class="mobile-link">お問い合わせ</a>
+  </div>
 
   <div class="page-header">
     <div class="container">
       <h1 class="page-title">Service</h1>
       <p class="page-desc">
-        SaaS導入・DX意思決定の「代理人」として。<br>
-        ベンダー中立の立場で、貴社の利益を最大化する選択を支援します。
+        IT投資の「迷い」をなくし、現場で「使える」状態にする。<br>
+        経営戦略と現場業務をつなぐ3つの支援領域。
       </p>
     </div>
   </div>
 
-  <main class="container">
-    
-    <!-- 課題提起 -->
-    <section class="section">
-      <h2 class="section-title">Why Us?</h2>
-      <div class="content-block">
-        <h3 class="block-title">SaaS導入、こんな失敗をしていませんか？</h3>
-        <p class="block-text">
-          紙・Excel中心の属人運用から脱却するためにSaaS導入を決めても、
-          多くの企業が「導入したのに使われない」「現場の業務実態に合わない」という壁に直面します。
-        </p>
-        <ul class="list-check">
-          <li>営業トークに押され、機能過多で高額なツールを契約してしまった</li>
-          <li>実機でのテスト（PoC）をせずに導入し、現場が混乱している</li>
-          <li>導入後の定着プランがなく、結局Excel管理に戻ってしまった</li>
-          <li>ベンダー側の視点しか入っておらず、自社の業務フローと乖離がある</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- サービス内容 -->
-    <section class="section">
-      <h2 class="section-title">Our Service</h2>
-      <div class="content-block">
-        <h3 class="block-title">経営者の代理人として「意思決定」を支援</h3>
-        <p class="block-text">
-          私たちはベンダーではありません。特定のツールを売るノルマもありません。
-          あくまで貴社の「代理人」として、フラットな視点で最適なツールを選定し、
-          泥臭い現場の調整までを引き受けます。
-        </p>
-      </div>
-
-      <div class="flow-grid">
-        <div class="flow-item">
-          <div class="flow-num">STEP 01</div>
-          <h3 class="flow-heading">現状ヒアリング・棚卸し</h3>
-          <p class="flow-desc">
-            紙・Excel・メールで分断された業務フローを可視化。
-            どこがボトルネックなのか、システム化でROIが出るのかを整理します。
-          </p>
-        </div>
-        <div class="flow-item">
-          <div class="flow-num">STEP 02</div>
-          <h3 class="flow-heading">SaaS選定・比較</h3>
-          <p class="flow-desc">
-            受発注・在庫・経理・勤怠など、対象領域のツールを3〜6社ピックアップ。
-            機能・費用・使いやすさを同一基準で比較表にまとめます。
-          </p>
-        </div>
-        <div class="flow-item">
-          <div class="flow-num">STEP 03</div>
-          <h3 class="flow-heading">実機PoC・Fit&GAP</h3>
-          <p class="flow-desc">
-            候補ツールを実際に触り、現場業務が回るかを検証（PoC）。
-            機能の不足部分（GAP）を洗い出し、運用でのカバー策を提示します。
-          </p>
-        </div>
-        <div class="flow-item">
-          <div class="flow-num">STEP 04</div>
-          <h3 class="flow-heading">意思決定・契約支援</h3>
-          <p class="flow-desc">
-            ROI試算やリスク評価を含めた決裁資料を作成。
-            経営判断に必要な材料を全て揃え、契約交渉もサポートします。
-          </p>
-        </div>
-        <div class="flow-item">
-          <div class="flow-num">STEP 05</div>
-          <h3 class="flow-heading">導入・定着支援</h3>
-          <p class="flow-desc">
-            初期設定代行だけでなく、現場向けのマニュアル作成や説明会を実施。
-            「使える」状態になるまで伴走します。
-          </p>
-        </div>
-        <div class="flow-item">
-          <div class="flow-num">STEP 06</div>
-          <h3 class="flow-heading">運用モニタリング</h3>
-          <p class="flow-desc">
-            導入後の利用率を監視。
-            形骸化していないか定期的にチェックし、改善サイクルを回します。
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 対象企業 -->
-    <section class="section">
-      <h2 class="section-title">Target</h2>
-      <div class="content-block">
-        <h3 class="block-title">このような企業様に最適です</h3>
-        <p class="block-text">
-          従業員数 30〜300名規模の中小・中堅企業様を中心に支援しています。
-        </p>
-        <ul class="list-check">
-          <li>専任のIT担当がおらず、総務や経理が兼務している</li>
-          <li>主要業務（受発注・在庫管理など）がベテラン社員の頭の中にしかない</li>
-          <li>複数拠点・多店舗展開しており、業務標準化が急務である</li>
-          <li>過去にシステム導入で失敗した経験があり、慎重に進めたい</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- 料金 -->
-    <section class="section">
-      <h2 class="section-title">Price</h2>
-      <div class="price-box">
-        <div class="price-title">参考価格</div>
-        <ul class="price-list">
-          <li>
-            <span class="price-label">スポット支援（比較・PoC）</span>
-            <span class="price-value">30万円 〜 150万円</span>
-          </li>
-          <li>
-            <span class="price-label">定着支援・CIO代行（月額）</span>
-            <span class="price-value">50万円 〜 200万円 / 月</span>
-          </li>
-        </ul>
-        <p style="margin-top:24px; font-size:14px; opacity:0.9;">
-          ※ 課題の深さや範囲によって変動します。<br>
-          まずは無料相談にて現状をお聞かせください。
-        </p>
-      </div>
-    </section>
-
-  </main>
-
-  <div class="cta-section">
+  <main>
     <div class="container">
-      <h2 style="font-size:24px; color:var(--color-primary); margin-bottom:16px; font-weight:700;">
-        まずは無料相談から
-      </h2>
-      <p style="color:var(--color-text-muted);">
-        「何から手をつければいいか分からない」という段階でも構いません。<br>
-        現状の課題感や、確認したいポイントを整理するお手伝いをします。
-      </p>
-      <a href="../index.html#contact" class="cta-btn">お問い合わせはこちら</a>
+      
+      <!-- Service 1 -->
+      <section class="section">
+        <div class="service-detail-row">
+          <div class="service-detail-content">
+            <h3><i data-lucide="layers" color="#0078d4"></i> DX意思決定・導入支援</h3>
+            <p>
+              「どのSaaSが良いかわからない」「営業トークに乗せられて契約してしまった」という失敗を防ぎます。
+              経営者の代理人としてベンダーと折衝し、機能・コスト・リスクを中立的に評価。
+              PoC（実機検証）とFit&GAP分析を行い、納得感のある意思決定資料を作成します。
+            </p>
+            <ul class="check-list">
+              <li>SaaS選定・比較（受発注・在庫・経理・勤怠など）</li>
+              <li>実機を用いたPoC（運用検証）代行</li>
+              <li>Fit&GAP分析とリスク評価</li>
+              <li>経営判断のための決裁資料・ロードマップ作成</li>
+            </ul>
+          </div>
+          <div class="service-visual">
+            [Image: 比較検討・選定プロセスの図]
+          </div>
+        </div>
+      </section>
+
+      <!-- Service 2 -->
+      <section class="section">
+        <div class="service-detail-row" style="direction: rtl;"> <!-- 交互配置 -->
+          <div class="service-detail-content" style="direction: ltr;">
+            <h3><i data-lucide="users" color="#0078d4"></i> 現場へのツール導入支援</h3>
+            <p>
+              ITツールは導入してからが本番です。現場が使いこなせなければ意味がありません。
+              業務フローの棚卸しを行い、現場スタッフへの説明会やマニュアル作成、
+              初期設定の代行までをサポートし、「現場で自走できる状態」まで伴走します。
+            </p>
+            <ul class="check-list">
+              <li>業務フローの可視化・再設計</li>
+              <li>導入時の初期設定・マスタ登録代行</li>
+              <li>現場向けマニュアル作成・操作説明会</li>
+              <li>運用開始後の定着モニタリング</li>
+            </ul>
+          </div>
+          <div class="service-visual">
+            [Image: 現場レクチャー・フロー図]
+          </div>
+        </div>
+      </section>
+
+      <!-- Service 3 -->
+      <section class="section">
+        <div class="service-detail-row">
+          <div class="service-detail-content">
+            <h3><i data-lucide="bar-chart-3" color="#0078d4"></i> データ活用・分析サポート</h3>
+            <p>
+              SaaSに溜まったデータを「宝の持ち腐れ」にしません。
+              TableauやPower BIを活用し、売上・在庫・稼働率などをリアルタイムで可視化。
+              経験と勘に頼らない、データドリブンな経営判断ができる基盤を構築します。
+            </p>
+            <ul class="check-list">
+              <li>BIツール（Tableau / Power BI）の導入・構築</li>
+              <li>経営ダッシュボードの設計・開発</li>
+              <li>データ分析基盤（DWH）の整備支援</li>
+              <li>分析レポート作成・定点観測</li>
+            </ul>
+          </div>
+          <div class="service-visual">
+            [Image: BIダッシュボードのイメージ]
+          </div>
+        </div>
+      </section>
+
+      <!-- Gym Column -->
+      <section class="section gym-section">
+        <div class="gym-card">
+          <div>
+            <span class="gym-badge">自社実証事業</span>
+            <h3 style="font-size: 22px; font-weight: 700; color: var(--color-primary); margin-bottom: 12px;">
+              IT活用ジム運営 (FC)
+            </h3>
+            <p style="margin-bottom: 24px; font-size: 14px;">
+              私たちは机上の空論だけでなく、自社リスクで実店舗運営を行っています。
+              24時間無人ジムのFC経営において、入退室管理・監視カメラ・会員管理システムの連携や、
+              データ分析による集客改善を実践。ここで得た「泥臭い知見」をお客様への提案に還元しています。
+            </p>
+          </div>
+          <div class="service-visual" style="height: 200px;">
+            [Image: ジムの内観・システム連携図]
+          </div>
+        </div>
+      </section>
+
     </div>
-  </div>
+  </main>
 
   <footer class="footer">
     <div class="container">
-      &copy; <script>document.write(new Date().getFullYear())</script> 牛田商事.
+      <div style="text-align: center;">
+        <span style="font-size: 18px; font-weight: 700; color: #fff; display: block; margin-bottom: 16px;">牛田 DX Agency</span>
+        <p>経営者のためのSaaS導入・DX意思決定支援パートナー</p>
+      </div>
+      <div class="copyright">
+        &copy; <script>document.write(new Date().getFullYear())</script> Ushida DX Agency. All rights reserved.
+      </div>
     </div>
   </footer>
 
+  <script>
+    lucide.createIcons();
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    
+    function updateMenuIcon(isOpen) {
+      menuToggle.innerHTML = `<i data-lucide="${isOpen ? 'x' : 'menu'}"></i>`;
+      lucide.createIcons({ root: menuToggle });
+    }
+
+    menuToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('is-open');
+      updateMenuIcon(mobileNav.classList.contains('is-open'));
+    });
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('is-open');
+        updateMenuIcon(false);
+      });
+    });
+  </script>
 </body>
 </html>
