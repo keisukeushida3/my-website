@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>牛田商事 | 経営者のためのIT投資・SaaS導入支援パートナー</title>
-  <meta name="description" content="経営判断に直結するIT投資・SaaS選定を支援。巷に溢れるツールから貴社に最適な解を選び抜き、業務プロセス改善からデータ分析まで、経営者の代理人として伴走します。" />
+  <title>牛田 DX Agency | 経営者のためのIT投資・SaaS導入支援パートナー</title>
+  <meta name="description" content="経営判断に直結するIT投資・SaaS選定を支援。SaaS導入支援、データ分析、そして自社でのIT活用店舗運営の実践知見を活かし、経営者の代理人として伴走します。" />
   <link rel="icon" href="favicon.png" type="image/png">
   
-  <!-- Google Fonts: 信頼感のある「Noto Sans JP」と英字用「Montserrat」を採用 -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Icons (Lucide) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
     /* --- Base Variables --- */
@@ -18,29 +21,24 @@
       /* Colors */
       --color-primary: #1c3b70;       /* 信頼のネイビー */
       --color-primary-dark: #0f254a;
-      --color-accent: #0078d4;        /* 行動を促すブルー */
-      --color-text-body: #334155;     /* 読みやすいダークグレー */
+      --color-accent: #0078d4;        /* 知的なブルー */
+      --color-text-body: #334155;     /* ダークグレー */
       --color-text-muted: #64748b;
       --color-bg-light: #f8fafc;
       --color-bg-white: #ffffff;
       --color-border: #e2e8f0;
 
-      /* Spacing */
-      --spacing-xs: 8px;
-      --spacing-sm: 16px;
-      --spacing-md: 32px;
-      --spacing-lg: 64px;
-      --spacing-xl: 96px;
-
-      /* Container */
+      /* Spacing & Sizes */
       --container-width: 1100px;
+      --header-height: 70px;
     }
 
-    /* --- Reset & Global Styles --- */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    /* --- Reset & Global --- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--header-height); /* アンカーリンクでヘッダー被りを防ぐ */
     }
 
     body {
@@ -48,53 +46,41 @@
       color: var(--color-text-body);
       background-color: var(--color-bg-white);
       line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
+      padding-top: var(--header-height); /* ヘッダー固定分 */
     }
 
-    a {
-      text-decoration: none;
-      color: inherit;
-      transition: color 0.2s ease, opacity 0.2s ease;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
+    a { text-decoration: none; color: inherit; transition: all 0.2s ease; }
+    img { max-width: 100%; height: auto; display: block; }
+    ul { list-style: none; }
 
     /* --- Components --- */
     .container {
       width: 100%;
       max-width: var(--container-width);
       margin: 0 auto;
-      padding: 0 var(--spacing-sm);
+      padding: 0 20px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 14px 32px;
-      border-radius: 4px; /* 知的な印象のため、丸すぎない角丸 */
+      padding: 12px 32px;
+      border-radius: 6px;
       font-weight: 700;
-      font-size: 16px;
-      letter-spacing: 0.05em;
-      transition: all 0.3s ease;
+      font-size: 15px;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
-
     .btn-primary {
       background-color: var(--color-primary);
       color: #fff;
-      box-shadow: 0 4px 12px rgba(28, 59, 112, 0.25);
+      box-shadow: 0 4px 12px rgba(28, 59, 112, 0.2);
     }
     .btn-primary:hover {
       background-color: var(--color-primary-dark);
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(28, 59, 112, 0.3);
     }
-
     .btn-outline {
       border: 1px solid var(--color-primary);
       color: var(--color-primary);
@@ -105,228 +91,250 @@
     }
 
     .section-title {
-      font-size: 32px;
+      font-size: 28px;
       font-weight: 700;
       text-align: center;
-      margin-bottom: var(--spacing-sm);
+      margin-bottom: 12px;
       color: var(--color-primary);
-      font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+      font-family: 'Montserrat', sans-serif;
     }
-    
     .section-subtitle {
       text-align: center;
       color: var(--color-text-muted);
-      margin-bottom: var(--spacing-lg);
-      font-size: 16px;
+      margin-bottom: 60px;
+      font-size: 15px;
     }
 
-    /* --- Header --- */
+    /* --- Header & Nav --- */
     .header {
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
+      height: var(--header-height);
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--color-border);
       z-index: 1000;
     }
-
     .header-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 70px;
+      height: 100%;
     }
-
     .logo {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
       font-size: 20px;
       color: var(--color-primary);
-      letter-spacing: -0.02em;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
     }
     .logo span {
-      font-weight: 400;
-      font-size: 14px;
+      font-size: 10px;
+      font-weight: 500;
       color: var(--color-text-muted);
-      margin-left: 10px;
+      margin-top: 2px;
     }
 
+    /* Desktop Nav */
     .nav-list {
       display: flex;
       gap: 32px;
-      list-style: none;
+      align-items: center;
     }
-
     .nav-link {
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--color-text-body);
     }
-    .nav-link:hover {
-      color: var(--color-accent);
-    }
+    .nav-link:hover { color: var(--color-accent); }
 
-    /* --- Hero Section --- */
-    .hero {
-      padding: 160px 0 100px;
-      background: linear-gradient(135deg, var(--color-bg-light) 0%, #ffffff 100%);
+    /* Mobile Menu Button */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--color-primary);
+      width: 40px;
+      height: 40px;
       position: relative;
-      overflow: hidden;
     }
 
+    /* Mobile Nav Overlay */
+    .mobile-nav {
+      position: fixed;
+      top: var(--header-height);
+      left: 0;
+      width: 100%;
+      height: calc(100vh - var(--header-height));
+      background: #fff;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      z-index: 999;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      border-top: 1px solid var(--color-border);
+    }
+    .mobile-nav.is-open {
+      transform: translateX(0);
+    }
+    .mobile-nav a {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-primary);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--color-bg-light);
+    }
+
+    /* --- Hero --- */
+    .hero {
+      padding: 100px 0 80px;
+      background: linear-gradient(135deg, var(--color-bg-light) 0%, #ffffff 100%);
+    }
     .hero-content {
       max-width: 800px;
     }
-
     .hero-tag {
       display: inline-block;
       background-color: #e0f2fe;
       color: var(--color-accent);
-      padding: 6px 12px;
+      padding: 6px 16px;
       border-radius: 99px;
       font-size: 13px;
       font-weight: 600;
       margin-bottom: 24px;
+      letter-spacing: 0.05em;
     }
-
     .hero-title {
-      font-size: 42px;
+      font-size: 38px;
       line-height: 1.4;
       font-weight: 700;
       color: var(--color-primary);
       margin-bottom: 24px;
     }
-
     .hero-desc {
-      font-size: 18px;
+      font-size: 16px;
       color: var(--color-text-muted);
       margin-bottom: 40px;
       max-width: 640px;
     }
-
     .hero-actions {
       display: flex;
       gap: 16px;
+      flex-wrap: wrap;
     }
 
-    /* --- Features / Concept --- */
-    .features {
-      padding: var(--spacing-xl) 0;
+    /* --- Services Grid --- */
+    .services-section {
+      padding: 80px 0;
     }
-
-    .features-grid {
+    .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 40px;
+      gap: 32px;
     }
-
-    .feature-card {
+    .service-card {
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
       padding: 32px;
       background: #fff;
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      transition: box-shadow 0.3s ease;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
     }
-    .feature-card:hover {
-      box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+    .service-card:hover {
+      box-shadow: 0 12px 24px rgba(0,0,0,0.06);
       border-color: var(--color-accent);
+      transform: translateY(-4px);
     }
-
-    .feature-icon {
-      font-size: 32px;
-      margin-bottom: 20px;
+    .service-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--color-bg-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       color: var(--color-accent);
+      margin-bottom: 24px;
     }
-
-    .feature-title {
-      font-size: 20px;
+    .service-title {
+      font-size: 18px;
       font-weight: 700;
       margin-bottom: 12px;
       color: var(--color-primary);
     }
-
-    .feature-text {
-      font-size: 15px;
+    .service-text {
+      font-size: 14px;
       color: var(--color-text-muted);
+      margin-bottom: 24px;
+      flex-grow: 1; /* 高さを揃える */
     }
-
-    /* --- Services Teaser --- */
-    .services-teaser {
-      background-color: var(--color-bg-light);
-      padding: var(--spacing-xl) 0;
-    }
-
-    .service-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
+    .service-link {
+      color: var(--color-accent);
+      font-weight: 600;
+      font-size: 14px;
+      display: inline-flex;
       align-items: center;
-      margin-bottom: 80px;
-    }
-    .service-row:last-child {
-      margin-bottom: 0;
-    }
-    .service-row.reverse {
-      direction: rtl; /* 簡易的な逆配置 */
-    }
-    .service-row.reverse > * {
-      direction: ltr;
+      gap: 4px;
     }
 
-    .service-content h3 {
-      font-size: 24px;
+    /* --- Features (Strength) --- */
+    .features-section {
+      padding: 80px 0;
+      background-color: var(--color-bg-light);
+    }
+    .feature-row {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      margin-bottom: 48px;
+    }
+    .feature-row:last-child { margin-bottom: 0; }
+    .feature-row:nth-child(even) { flex-direction: row-reverse; }
+    
+    .feature-content { flex: 1; }
+    .feature-visual {
+      flex: 1;
+      height: 240px;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #cbd5e1;
       font-weight: 700;
+    }
+    .feature-content h3 {
+      font-size: 20px;
       margin-bottom: 16px;
       color: var(--color-primary);
     }
 
-    .service-content p {
-      margin-bottom: 24px;
-      color: var(--color-text-muted);
-    }
-
-    .service-visual {
-      background: #fff;
-      height: 300px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--color-border);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.03);
-      color: #cbd5e1;
-      font-weight: 700;
-    }
-
-    /* --- CTA Section --- */
+    /* --- CTA --- */
     .cta {
-      padding: 80px 0;
+      padding: 100px 0;
       background-color: var(--color-primary);
       color: #fff;
       text-align: center;
     }
-    .cta h2 {
-      font-size: 32px;
-      margin-bottom: 16px;
-    }
-    .cta p {
-      margin-bottom: 32px;
-      opacity: 0.9;
-    }
-    .cta .btn {
-      background: #fff;
-      color: var(--color-primary);
-    }
-    .cta .btn:hover {
-      background: #f1f5f9;
-    }
+    .cta h2 { font-size: 28px; margin-bottom: 16px; font-weight: 700; }
+    .cta p { margin-bottom: 32px; opacity: 0.9; }
+    .cta .btn { background: #fff; color: var(--color-primary); }
+    .cta .btn:hover { background: #f1f5f9; }
 
     /* --- Footer --- */
     .footer {
       background-color: #0f172a;
       color: #94a3b8;
-      padding: 64px 0 24px;
+      padding: 60px 0 24px;
       font-size: 14px;
     }
     .footer-grid {
@@ -342,48 +350,27 @@
       margin-bottom: 16px;
       display: block;
     }
-    .footer-links ul {
-      list-style: none;
-    }
-    .footer-links li {
-      margin-bottom: 12px;
-    }
-    .footer-links a:hover {
-      color: #fff;
-    }
     .copyright {
       text-align: center;
       border-top: 1px solid #1e293b;
       padding-top: 24px;
     }
+    .footer-links li { margin-bottom: 12px; }
+    .footer-links a:hover { color: #fff; }
 
-    /* --- Mobile --- */
-    @media (max-width: 768px) {
-      .header-inner {
-        padding: 0 16px;
-      }
-      .logo span {
-        display: none;
-      }
-      .nav-list {
-        display: none; /* 簡易的に非表示（ハンバーガーメニューはJS必要になるため今回は省略） */
-      }
-      .hero-title {
-        font-size: 32px;
-      }
-      .features-grid, .service-row {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .service-row.reverse {
-        direction: ltr;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
-      .btn {
-        width: 100%;
-      }
+    /* --- Responsive --- */
+    @media (max-width: 860px) {
+      .services-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+      .feature-row, .feature-row:nth-child(even) { flex-direction: column; }
+      .feature-visual { width: 100%; height: 200px; }
+      
+      /* Nav */
+      .nav-list { display: none; }
+      .menu-toggle { display: block; }
+      .header-inner { padding: 0 16px; }
+      
+      .hero-title { font-size: 28px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
     }
   </style>
 </head>
@@ -392,139 +379,155 @@
   <!-- Header -->
   <header class="header">
     <div class="container header-inner">
-      <a href="index.html" class="logo">
-        牛田商事
-        <span>SaaS導入・IT投資意思決定支援</span>
+      <a href="#" class="logo">
+        牛田 DX Agency
+        <span>SaaS導入・DX意思決定支援</span>
       </a>
+      
+      <!-- Desktop Nav -->
       <nav>
         <ul class="nav-list">
-          <li><a href="services/index.html" class="nav-link">サービス</a></li>
+          <li><a href="#services" class="nav-link">サービス</a></li>
+          <li><a href="#strength" class="nav-link">特徴・強み</a></li>
           <li><a href="company/index.html" class="nav-link">私たちについて</a></li>
-          <!-- 将来的な拡張例: <li><a href="/products/" class="nav-link">取扱製品</a></li> -->
           <li><a href="#contact" class="btn btn-primary" style="padding: 8px 20px; font-size: 14px;">お問い合わせ</a></li>
         </ul>
       </nav>
+
+      <!-- Mobile Menu Button (Lucide仕様に合わせて修正) -->
+      <button class="menu-toggle" id="menuToggle" aria-label="メニューを開く">
+        <i data-lucide="menu" id="menuIcon"></i>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Nav Overlay -->
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#services" class="mobile-link">サービス</a>
+    <a href="#strength" class="mobile-link">特徴・強み</a>
+    <a href="company/index.html" class="mobile-link">私たちについて</a>
+    <a href="#contact" class="mobile-link">お問い合わせ</a>
+  </div>
 
   <!-- Hero -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <span class="hero-tag">経営者・IT推進者のためのパートナー</span>
+        <span class="hero-tag">経営者のためのDXパートナー</span>
         <h1 class="hero-title">
-          最適なIT投資判断を、<br>
-          経営者の代理人として実現する。
+          そのIT投資に、確信を。<br>
+          意思決定から定着まで伴走する。
         </h1>
         <p class="hero-desc">
-          溢れるSaaS製品・ツールの中から、貴社の業務とフェーズに最適な解を選定。
-          導入支援から業務プロセス改善、データ分析まで、
-          「なんとなくのIT化」を「利益を生むIT投資」へ変えるお手伝いをします。
+          SaaS導入の比較・PoC、そしてデータを活用した「現場視点」のDX支援
+          利益を生むための意思決定を代理します
         </p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary">無料相談を申し込む</a>
-          <a href="services/index.html" class="btn btn-outline">サービス詳細を見る</a>
+          <a href="#services" class="btn btn-outline">サービス詳細を見る</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Concept / Features -->
-  <section class="features">
-    <div class="container">
-      <h2 class="section-title">牛田商事の特徴</h2>
-      <p class="section-subtitle">ベンダーに依存しない、中立的かつ経営視点のサポート</p>
-      
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">⚖️</div>
-          <h3 class="feature-title">中立的な選定・判断</h3>
-          <p class="feature-text">
-            特定のSaaSベンダーの代理店ではありません。
-            「貴社にとって何がベストか」という一点においてのみ比較・検証し、
-            公平な目でFit&GAP分析を行います。
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📊</div>
-          <h3 class="feature-title">経営視点のROI試算</h3>
-          <p class="feature-text">
-            単なる機能比較表ではなく、「投資対効果（ROI）」や
-            「将来的なリスク」まで含めた意思決定資料を作成。
-            経営判断のスピードと質を高めます。
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🚀</div>
-          <h3 class="feature-title">定着までの伴走</h3>
-          <p class="feature-text">
-            ツールを入れて終わりではありません。
-            現場への定着、業務プロセスの見直し、
-            さらにその後のデータ活用まで一気通貫で支援します。
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Teaser -->
-  <section class="services-teaser">
+  <!-- Services (3 Columns) -->
+  <section id="services" class="services-section">
     <div class="container">
       <h2 class="section-title">Services</h2>
-      <p class="section-subtitle">IT投資の各フェーズに合わせたご支援</p>
+      <p class="section-subtitle">DX推進のフェーズに合わせた3つの支援領域</p>
 
-      <div class="service-row">
-        <div class="service-content">
-          <h3>SaaS選定・導入支援</h3>
-          <p>
-            「どのツールが良いかわからない」「比較検討する時間がない」という課題に対し、要件定義から比較、PoC（実機検証）までを代行。手戻りのない導入を実現します。
+      <div class="services-grid">
+        <!-- Service 1 -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i data-lucide="layers"></i>
+          </div>
+          <h3 class="service-title">DX意思決定・導入支援</h3>
+          <p class="service-text">
+            SaaS導入における「比較・PoC・Fit&GAP分析」を経営者の代理として代行。
+            ベンダー中立の立場で、業務プロセスに最適なツール選定と定着までの手戻りゼロを実現します。
           </p>
-          <ul style="list-style: none; margin-bottom: 24px; color: var(--color-text-muted); font-size: 14px;">
-            <li>✅ 主要業務（受発注・在庫・経理など）のSaaS比較</li>
-            <li>✅ 実機を用いたPoC・運用テスト</li>
-            <li>✅ 意思決定のための決裁資料作成</li>
-          </ul>
-          <a href="services/index.html" class="btn btn-outline" style="padding: 10px 24px; font-size: 14px;">詳しく見る</a>
+          <a href="services/index.html" class="service-link">詳しく見る <i data-lucide="arrow-right" size="16"></i></a>
         </div>
-        <div class="service-visual">
-          [Image: 複数のSaaSロゴや比較表をイメージした図]
+
+        <!-- Service 2 -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i data-lucide="bar-chart-3"></i>
+          </div>
+          <h3 class="service-title">現場へのツール導入支援</h3>
+          <p class="service-text">
+            現場の業務フローや運用実態を丁寧にヒアリングし、実際の導入を支援します。
+            導入後も定着・活用まで伴走し、現場で「本当に使われる」仕組みづくりを実現します。
+          </p>
+          <a href="services/index.html" class="service-link">詳しく見る <i data-lucide="arrow-right" size="16"></i></a>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card">
+          <div class="service-icon">
+            <i data-lucide="store"></i>
+          </div>
+          <h3 class="service-title">データ活用・分析サポート</h3>
+          <p class="service-text">
+            蓄積されたデータを「経営判断の武器」へ。
+            TableauやPower BIを用いたダッシュボード構築やデータ基盤の整備を行い、
+            リアルタイムな状況可視化を支援します。
+          </p>
+          <!-- 修正: リンクを詳細ページへの動線に変更 -->
+          <a href="services/index.html" class="service-link">詳しく見る <i data-lucide="arrow-right" size="16"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Strength -->
+  <section id="strength" class="features-section">
+    <div class="container">
+      <h2 class="section-title">Strength</h2>
+      <p class="section-subtitle">牛田 DX Agency が選ばれる理由</p>
+      
+      <div class="feature-row">
+        <div class="feature-content">
+          <h3>01. ベンダー中立な「代理人」ポジション</h3>
+          <p style="color:var(--color-text-muted);">
+            特定のSaaSを売る代理店ではありません。貴社の業務にとって何がベストか、という一点のみで比較検討を行います。
+            営業トークを排除し、公平なFit&GAP分析でリスクを洗い出します。
+          </p>
+        </div>
+        <div class="feature-visual">
+          [Image: 比較検討・中立性のイメージ図]
         </div>
       </div>
 
-      <div class="service-row reverse">
-        <div class="service-content">
-          <h3>業務プロセス改善・データ分析</h3>
-          <p>
-            SaaS導入は手段に過ぎません。導入後のデータ活用や、BIツールを用いた可視化、業務フローの再設計を行い、組織の生産性を最大化します。
+      <div class="feature-row">
+        <div class="feature-content">
+          <h3>02. 自社事業での「実践知」がある</h3>
+          <p style="color:var(--color-text-muted);">
+            自社でも店舗運営を行い、ITによる省人化・データ分析を日々実践しています。
+            「経営者としての痛み」が分かるからこそ、実効性のある提案が可能です。
           </p>
-          <ul style="list-style: none; margin-bottom: 24px; color: var(--color-text-muted); font-size: 14px;">
-            <li>✅ 業務フローの棚卸しと再設計</li>
-            <li>✅ データ分析基盤の構築支援</li>
-            <li>✅ BIツールによる経営ダッシュボード作成</li>
-          </ul>
-          <a href="services/index.html" class="btn btn-outline" style="padding: 10px 24px; font-size: 14px;">詳しく見る</a>
         </div>
-        <div class="service-visual">
-          [Image: データ分析グラフやダッシュボードのイメージ図]
+        <div class="feature-visual">
+          [Image: 店舗DX・実践のイメージ図]
         </div>
       </div>
-
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="cta" id="contact">
+  <section id="contact" class="cta">
     <div class="container">
       <h2>まずは現状の課題をお聞かせください</h2>
       <p>
-        SaaS導入の悩み、業務改善の課題など、<br>
+        SaaS選びの迷い、データの扱い方、業務効率化の悩み。<br>
         まだ具体的でなくても構いません。初回相談は無料です。
       </p>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc-zWNKAqa0DqnMjRWVdQivJBVxWRObs9ZKeXotUdYJitCnIA/viewform" target="_blank" class="btn">
-        お問い合わせフォームを開く
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSc-zWNKAqa0DqnMjRWVdQivJBVxWRObs9ZKeXotUdYJitCnIA/viewform" target="_blank" class="btn btn-primary" style="background: #fff; color: var(--color-primary);">
+        お問い合わせフォーム
       </a>
       <p style="margin-top: 24px; font-size: 14px; opacity: 0.8;">
-        Email:k.ushida@ushida-corp.com
+        Email: k.ushida@ushida-corp.com
       </p>
     </div>
   </section>
@@ -534,22 +537,22 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <span class="footer-logo">牛田商事</span>
+          <span class="footer-logo">牛田 DX Agency</span>
           <p>
-            経営者・IT推進者のための<br>
-            SaaS導入・意思決定支援パートナー
+            経営者のための<br>
+            SaaS導入・DX意思決定支援パートナー
           </p>
         </div>
         <div class="footer-links">
-          <h4>Menu</h4>
+          <h4 style="color:#fff; margin-bottom:12px;">Menu</h4>
           <ul>
-            <li><a href="index.html">トップページ</a></li>
-            <li><a href="services/index.html">サービス一覧</a></li>
+            <li><a href="#">トップページ</a></li>
+            <li><a href="#services">サービス一覧</a></li>
             <li><a href="company/index.html">会社概要</a></li>
           </ul>
         </div>
         <div class="footer-links">
-          <h4>Support</h4>
+          <h4 style="color:#fff; margin-bottom:12px;">Contact</h4>
           <ul>
             <li><a href="#contact">お問い合わせ</a></li>
             <li><a href="#">プライバシーポリシー</a></li>
@@ -557,9 +560,46 @@
         </div>
       </div>
       <div class="copyright">
-        &copy; <script>document.write(new Date().getFullYear())</script> 牛田商事. All rights reserved.
+        &copy; <script>document.write(new Date().getFullYear())</script> Ushida DX Agency. All rights reserved.
       </div>
     </div>
   </footer>
+
+  <!-- Scripts -->
+  <script>
+    // アイコンの初期化
+    lucide.createIcons();
+
+    // ハンバーガーメニューの制御
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    
+    // Lucideは<i>を<svg>に置換するため、操作対象を都度取得するか、
+    // 親要素の中身を書き換えるアプローチをとる
+    
+    function updateMenuIcon(isOpen) {
+      // 一旦中身をクリアして、新しいアイコンタグを挿入してからcreateIconsする
+      // これが最も安全にアイコンを切り替える方法の一つ
+      menuToggle.innerHTML = `<i data-lucide="${isOpen ? 'x' : 'menu'}"></i>`;
+      lucide.createIcons({
+        root: menuToggle // menuToggle内の要素だけをレンダリング対象にする
+      });
+    }
+
+    menuToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('is-open');
+      const isOpen = mobileNav.classList.contains('is-open');
+      updateMenuIcon(isOpen);
+    });
+
+    // モバイルメニュー内のリンクをクリックしたら閉じる
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('is-open');
+        updateMenuIcon(false);
+      });
+    });
+  </script>
 </body>
 </html>
